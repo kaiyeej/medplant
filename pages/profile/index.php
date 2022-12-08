@@ -1,3 +1,8 @@
+<style>
+    .profile-info ul li span{
+        color:#343a40;
+    }
+</style>
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
@@ -33,10 +38,9 @@
                         <div class="profile-info">
                             <h5 class="mb-20 h5 text-blue">Contact Information</h5>
                             <ul>
-                                
                                 <li>
                                     <span>Username:</span>
-                                    <span class="username"></span>
+                                    <span class="main_username_label"></span>
                                 </li>
                                 <li>
                                     <span>Email Address:</span>
@@ -44,7 +48,7 @@
                                 </li>
                                 <li>
                                     <span>Date Last Modified:</span>
-                                    <span class="main_email_label"></span>
+                                    <span class="main_date_label"></span>
                                 </li>
                             </ul>
                         </div>
@@ -56,7 +60,7 @@
                             <div class="tab height-100-p">
                                 <ul id="myTab" class="nav nav-tabs customtab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab" aria-selected="true">Timeline</a>
+                                        <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab" aria-selected="true">Personal Information</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#setting" role="tab" aria-selected="false">Settings</a>
@@ -65,132 +69,46 @@
                                 <div class="tab-content">
                                     <!-- Timeline Tab start -->
                                     <div class="tab-pane fade active show" id="timeline" role="tabpanel">
-                                        <div class="pd-20">
-                                            <div class="profile-timeline">
-                                                <div class="timeline-month">
-                                                    <h5>August, 2020</h5>
+                                        <div class="profile-setting">
+                                            <form method='POST' id='frm_profile' class="profile">
+                                                <div class="profile-edit-list row">
+                                                    <div class="weight-500 col-md-4">
+                                                        <div class="form-group">
+                                                            <label>First Name</label>
+                                                            <input class="form-control form-control-lg input-item" id="user_fname" name="input[user_fname]" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="weight-500 col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Middle Name</label>
+                                                            <input class="form-control form-control-lg input-item" id="user_mname" name="input[user_mname]" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="weight-500 col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Last Name</label>
+                                                            <input class="form-control form-control-lg input-item" id="user_lname" name="input[user_lname]" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="weight-500 col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Contact #</label>
+                                                            <input class="form-control form-control-lg input-item" id="user_contact_num" name="input[user_contact_num]" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="weight-500 col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input class="form-control form-control-lg" id="user_email" name="input[user_email]" type="email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="weight-500 col-md-12">
+                                                        <div class="form-group mb-0">
+                                                            <button id="btn_submit" type="submit" class="btn btn-success">Update Information</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="profile-timeline-list">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="date">12 Aug</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-android-alarm-clock"></i> Task
-                                                                Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="date">10 Aug</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-ios-chatboxes"></i> Task Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="date">10 Aug</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-ios-clock"></i> Event Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="date">10 Aug</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-ios-clock"></i> Event Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="timeline-month">
-                                                    <h5>July, 2020</h5>
-                                                </div>
-                                                <div class="profile-timeline-list">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="date">12 July</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-android-alarm-clock"></i> Task
-                                                                Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="date">10 July</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-ios-chatboxes"></i> Task Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="timeline-month">
-                                                    <h5>June, 2020</h5>
-                                                </div>
-                                                <div class="profile-timeline-list">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="date">12 June</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-android-alarm-clock"></i> Task
-                                                                Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="date">10 June</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-ios-chatboxes"></i> Task Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="date">10 June</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-ios-clock"></i> Event Added
-                                                            </div>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur
-                                                                adipisicing elit.
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                     <!-- Timeline Tab End -->
@@ -357,6 +275,60 @@
             e.preventDefault()
             $(this).tab('show');
         });
+    });
+
+  getProfile("<?= $_SESSION['md_user_id'] ?>");
+  function getProfile(id) {
+      $.ajax({
+        type: "POST",
+        url: "controllers/sql.php?c=Profile&q=view",
+        data: {
+          input: {
+            id: id
+          }
+        },
+        success: function(data) {
+          var jsonParse = JSON.parse(data);
+          const json = jsonParse.data;
+
+          $("#hidden_id").val(id);
+
+          $('.input-item').map(function() {
+            //console.log(this.id);
+            const id_name = this.id;
+            this.value = json[id_name];
+          });
+
+        }
+      });
+    }
+
+    $("#frm_profile").submit(function(e) {
+      e.preventDefault();
+
+      $("#btn_submit").prop('disabled', true);
+      $("#btn_submit").html("<span class='fa fa-spinner fa-spin'></span> Submitting ...");
+
+      var hidden_id = $("#hidden_id").val();
+      var q = hidden_id > 0 ? "edit" : "add";
+      $.ajax({
+        type: "POST",
+        url: "controllers/sql.php?c=Profile&q=edit",
+        data: $("#frm_profile").serialize(),
+        success: function(data) {
+          var json = JSON.parse(data);
+          if (json.data == 1) {
+            success_update();
+          } else if (json.data == 2) {
+            entry_already_exists();
+          } else {
+            failed_query(json);
+          }
+
+          $("#btn_submit").prop('disabled', false);
+          $("#btn_submit").html("Update Information");
+        }
+      });
     });
 
 </script>

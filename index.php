@@ -285,6 +285,8 @@ if (!isset($_SESSION["mp_user_id"])) {
 	<script type="text/javascript">
 		var modal_detail_status = 0;
 		$(document).ready(function() {
+
+			
 			$(".select2").select2();
 
 			$(".select2").css({
@@ -301,11 +303,11 @@ if (!isset($_SESSION["mp_user_id"])) {
 			});
 
 			
+			$(".main_username_label").html(user_profile[0]);
 			$(".main_fullname_label").html(user_profile[1]);
 			$(".main_category_label").html(user_profile[2]);
-			$(".main_username_label").html(user_profile[3]);
-			$(".main_email_label").html(user_profile[4]);
-			$(".main_date_label").html(user_profile[5]);
+			$(".main_email_label").html(user_profile[3]);
+			$(".main_date_label").html(user_profile[4]);
 			
 		});
 
@@ -776,6 +778,7 @@ if (!isset($_SESSION["mp_user_id"])) {
 			location.reload();
 
 		}
+
 	</script>
 
 

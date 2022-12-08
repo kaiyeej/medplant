@@ -31,7 +31,7 @@ class Profile extends Connection
 
     public function edit()
     {
-        $primary_id = $this->inputs[$this->pk];
+        $primary_id = $_SESSION['md_user_id'];
         $username = $this->clean($this->inputs['username']);
         $is_exist = $this->select($this->table, $this->pk, "username = '$username' AND  $this->pk != '$primary_id'");
         if ($is_exist->num_rows > 0) {
@@ -43,8 +43,6 @@ class Profile extends Connection
                 'user_lname' => $this->inputs['user_lname'],
                 'user_email' => $this->inputs['user_email'],
                 'user_contact_num' => $this->inputs['user_contact_num'],
-                'user_category' => $this->inputs['user_category'],
-                'username' => $username
             );
             return $this->update($this->table, $form, "$this->pk = '$primary_id'");
         }
@@ -98,8 +96,8 @@ class Profile extends Connection
         $primary_id = $_SESSION['mp_user_id'];
         $result = $this->select($this->table, "*", "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
-        $fullname = $row['user_fname']." ".$row['user_lname'];
+        $fullname = $row['user_fname']." ".$row['user_mname']." ".$row['user_lname'];
         $cat = $row['user_category'] == "A" ? "Admin" : "User";
-        return [$row['username'],$fullname,$cat,$row['username'],$row['user_email'],$row['date_last_modified']];
+        return [$row['username'],$fullname,$cat,$row['user_email'],$row['date_last_modified']];
     }
 }

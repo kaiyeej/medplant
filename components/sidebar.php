@@ -1,3 +1,7 @@
+<?php 
+$request = $_SERVER['REQUEST_URI'];
+$page = str_replace("/medplant/", "", $request);
+?>
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.html">
@@ -12,12 +16,12 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li>
-                    <a href="./" class="dropdown-toggle no-arrow ">
+                    <a href="./" class="dropdown-toggle no-arrow <?= $page == "" || $page == "homepage" ? "active" : "" ; ?>">
                         <span class="micon bi bi-house"></span><span class="mtext">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./plants" class="dropdown-toggle no-arrow">
+                    <a href="./plants" class="dropdown-toggle no-arrow <?= $page == "plants" ? "active" : "" ; ?>">
                         <span class="micon bi bi-tree"></span><span class="mtext">Plants</span>
                     </a>
                 </li>

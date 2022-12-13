@@ -13,6 +13,10 @@ $routes = array(
         'class_name' => 'Plants',
         'has_detail' => 0
     ),
+    "users" => array(
+        'class_name' => 'Users',
+        'has_detail' => 0
+    ),
     "profile" => array(
         'class_name' => 'Profile',
         'has_detail' => 0

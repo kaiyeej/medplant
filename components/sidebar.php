@@ -25,6 +25,11 @@ $page = str_replace("/medplant/", "", $request);
                         <span class="micon bi bi-tree"></span><span class="mtext">Plants</span>
                     </a>
                 </li>
+                <li>
+                    <a href="./users" class="dropdown-toggle no-arrow <?= $page == "users" ? "active" : "" ; ?>">
+                        <span class="micon bi bi-person-plus-fill"></span><span class="mtext">Users</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

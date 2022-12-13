@@ -5,30 +5,26 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Plants</h4>
+                            <h4>Users</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="index.html">Home</a>
+                                    <a href="./">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Plants
+                                    Users
                                 </li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
-                        <div class="dropdown">
-                            <a class="btn btn-success dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                <i class="icon-copy fa fa-cog" aria-hidden="true"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" onclick="scanPlant()"><i class="icon-copy fa fa-plus" aria-hidden="true"></i> Add New</a>
-                                <a class="dropdown-item" href="#" onclick='deleteEntry()'><i class="icon-copy fa fa-trash-o" aria-hidden="true"></i> Delete</a>
-                            </div>
-                        </div>
+                        <button type="button" onclick="addUser()" class="btn btn-success mt-2 mt-sm-0 btn-icon-text">
+                            <i class="fa fa-plus"></i> Add New
+                        </button>
+                        
                     </div>
+                    
                 </div>
             </div>
             <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
@@ -36,11 +32,11 @@
                     <table class="checkbox-datatable table hover data-table-export dataTable no-footer dtr-inline" id="dt_entries" role="grid">
                         <thead>
                             <tr role="row">
-                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Image</th>
-                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Name</th>
-                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Name Authority</th>
-                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Synonyms</th>
-                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Date Added</th>
+                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Fullname</th>
+                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Email</th>
+                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Contact #</th>
+                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Category</th>
+                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Date Last Modified</th>
                                 <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Action</th>
                             </tr>
                         </thead>
@@ -53,17 +49,16 @@
         </div>
     </div>
 </div>
-<?php include "modal_image.php"; ?>
-<?php include "modal_scan.php"; ?>
+<?php include "modal_user.php"; ?>
 <script type="text/javascript">
-    function scanPlant() {
-		document.getElementById("frm_submit").reset();
-        $("#modalEntry").modal("show");
-        $(".div-scan").show();
-        $("#canvas_plant").hide();
-        $("#btn_submit").hide();
-        $("#canvas_probability").hide();
-        $("#plant_img").prop("required",true);
+    function addUser(){
+        addModal();
+        $("#div_password").show();
+    }
+
+    function getUserDetails(id){
+        $("#div_password").hide();
+        getEntryDetails(id);
     }
 
     function getEntries() {
@@ -80,43 +75,41 @@
             ],
             "columns": [
                 {
-                    "mRender": function(data, type, row) {
-                        return "<img src='vendors/file/" + row.plant_img + "' style='max-height: 80px !important;' onclick=previewImage('" + row.plant_img + "')>";
-                    }
+                    "data": "user_fullname"
                 },
                 {
-                    "data": "plant_name"
+                    "data": "user_email"
                 },
                 {
-                    "data": "plant_name_authority"
+                    "data": "user_contact_num"
                 },
                 {
-                    "data": "plant_synonyms"
+                    "data": "category"
                 },
                 {
-                    "data": "date_added"
+                    "data": "date_last_modified"
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return '<div class="table-actions">'+
-                                    '<a onclick="getPlantDetails(' + row.plant_id + ')" data-color="#265ed7" style="color: rgb(38, 94, 215);"><i class="icon-copy dw dw-edit2"></i></a>'+
-                                    '<a onclick="deleteEntry('+ row.plant_id +')" data-color="#e95959" style="color: rgb(233, 89, 89);"><i class="icon-copy dw dw-delete-3"></i></a>'+
-                               '</div>';
+                        return '<div class="table-actions">' +
+                            '<a onclick="getUserDetails(' + row.user_id + ')" data-color="#265ed7" style="color: rgb(38, 94, 215);"><i class="icon-copy dw dw-edit2"></i></a>' +
+                            '<a onclick="deleteEntry(' + row.user_id + ')" data-color="#e95959" style="color: rgb(233, 89, 89);"><i class="icon-copy dw dw-delete-3"></i></a>' +
+                            '</div>';
                     }
 
-                    
+
                 }
             ]
         });
     }
 
-    function getPlantDetails(id){
+    function getPlantDetails(id) {
         $(".div-scan").hide();
         $("#canvas_plant").show();
         $("#btn_submit").show();
         getEntryDetails(id);
         $("#canvas_propability").hide();
-        $("#plant_img").prop("required",false);
+        $("#plant_img").prop("required", false);
         $("#hidden_id").val(id);
     }
 

@@ -127,7 +127,7 @@ if (isset($_SESSION["md_user_id"])) {
 										<div class="input-group mb-0">
 											<button type="submit" class="btn btn-success btn-lg btn-block">Sign In</button>
 										</div>
-										<div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373" >
+										<!-- <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373" >
 											OR
 										</div>
 										<div class="input-group mb-0">
@@ -136,7 +136,7 @@ if (isset($_SESSION["md_user_id"])) {
 												href="register.html"
 												>Register To Create Account</a
 											>
-										</div>
+										</div> -->
 									</div>
 								</div>
 							</form>

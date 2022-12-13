@@ -56,6 +56,13 @@ class Users extends Connection
         $ids = implode(",", $this->inputs['ids']);
         return $this->delete($this->table, "$this->pk IN($ids)");
     }
+    
+    public function delete_entry()
+    {
+        $id = $this->inputs['id'];
+
+        return $this->delete($this->table, "$this->pk = $id");
+    }
 
     public function show()
     {
@@ -64,7 +71,7 @@ class Users extends Connection
         $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
             $row['user_fullname'] = $row['user_fname']." ".$row['user_mname']." ".$row['user_lname'];
-            $row['category'] = ($row['user_category'] == "A" ? "Admin" : "Faculty");
+            $row['category'] = ($row['user_category'] == "A" ? "Admin" : "User");
             $rows[] = $row;
         }
         return $rows;

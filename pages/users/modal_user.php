@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label><strong>Middle name</strong></label>
                                 <div>
-                                <input type="text" class="form-control input-item" name="input[user_mname]" id="user_mname" placeholder="User middle name" maxlength="50" autocomplete="off">
+                                    <input type="text" class="form-control input-item" name="input[user_mname]" id="user_mname" placeholder="User middle name" maxlength="50" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <label><strong>Last name</strong></label>
                                 <div>
-                                <input type="text" class="form-control input-item" name="input[user_lname]" id="user_lname" placeholder="User last name" maxlength="50" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[user_lname]" id="user_lname" placeholder="User last name" maxlength="50" autocomplete="off" required>
                                 </div>
                             </div>
                         </div>
@@ -34,11 +34,11 @@
                             <div class="form-group">
                                 <label><strong>Category</strong></label>
                                 <div>
-                                <select class="form-control input-item select2" name="input[user_category]" id="user_category" required>
-                                    <option value="">&mdash; Please Select &mdash;</option>
-                                    <option value="A">Admin</option>
-                                    <option value="S">Faculty</option>
-                                </select>
+                                    <select class="form-control input-item" name="input[user_category]" id="user_category" required>
+                                        <option value="">&mdash; Please Select &mdash;</option>
+                                        <option value="A">Admin</option>
+                                        <option value="U">User</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <label><strong>Contact #</strong></label>
                                 <div>
-                                <input type="text" class="form-control input-item" name="input[user_contact_num]" autocomplete="off" id="user_contact_num" placeholder="Contact number" required>
+                                    <input type="text" class="form-control input-item" name="input[user_contact_num]" autocomplete="off" id="user_contact_num" placeholder="Contact number" required>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label><strong>Email</strong></label>
                                 <div>
-                                <input type="email" class="form-control input-item" name="input[user_email]" autocomplete="off" id="user_email" placeholder="Email address" required>
+                                    <input type="email" class="form-control input-item" name="input[user_email]" autocomplete="off" id="user_email" placeholder="Email address" required>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <label><strong>Username</strong></label>
                                 <div>
-                                <input type="text" class="form-control input-item" name="input[username]" autocomplete="off" id="username" placeholder="Username" maxlength=15 required>
+                                    <input type="text" class="form-control input-item" name="input[username]" autocomplete="off" id="username" placeholder="Username" maxlength=15 required>
                                 </div>
                             </div>
                         </div>
@@ -70,15 +70,19 @@
                             <div id="div_password" class="form-group">
                                 <label><strong>Password</strong></label>
                                 <div>
-                                <input type="text" class="form-control input-item" name="input[password]" autocomplete="off" id="password" placeholder="Password" required>
+                                    <input type="text" class="form-control input-item" name="input[password]" autocomplete="off" id="password" placeholder="Password" required>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal"><i class="fas fa-times"></i></button>
-                    <button type="submit" class="btn btn-primary font-weight-bold"><i class="flaticon2-check-mark"></i></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" id="btn_submit" class="btn btn-success">
+                        Save
+                    </button>
                 </div>
             </div>
         </div>

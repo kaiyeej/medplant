@@ -10,7 +10,7 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="index.html">Home</a>
+                                    <a href="./">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Plants
@@ -19,16 +19,12 @@
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
-                        <div class="dropdown">
-                            <a class="btn btn-success dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                <i class="icon-copy fa fa-cog" aria-hidden="true"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" onclick="scanPlant()"><i class="icon-copy fa fa-plus" aria-hidden="true"></i> Add New</a>
-                                <a class="dropdown-item" href="#" onclick='deleteEntry()'><i class="icon-copy fa fa-trash-o" aria-hidden="true"></i> Delete</a>
-                            </div>
-                        </div>
+                        <button type="button" onclick="scanPlant()" class="btn btn-success mt-2 mt-sm-0 btn-icon-text">
+                            <i class="fa fa-plus"></i> Add New
+                        </button>
+                        
                     </div>
+                    
                 </div>
             </div>
             <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
@@ -57,13 +53,13 @@
 <?php include "modal_scan.php"; ?>
 <script type="text/javascript">
     function scanPlant() {
-		document.getElementById("frm_submit").reset();
+        document.getElementById("frm_submit").reset();
         $("#modalEntry").modal("show");
         $(".div-scan").show();
         $("#canvas_plant").hide();
         $("#btn_submit").hide();
         $("#canvas_probability").hide();
-        $("#plant_img").prop("required",true);
+        $("#plant_img").prop("required", true);
     }
 
     function getEntries() {
@@ -78,8 +74,7 @@
             'buttons': [
                 'copy', 'csv', 'pdf', 'print'
             ],
-            "columns": [
-                {
+            "columns": [{
                     "mRender": function(data, type, row) {
                         return "<img src='vendors/file/" + row.plant_img + "' style='max-height: 80px !important;' onclick=previewImage('" + row.plant_img + "')>";
                     }
@@ -98,25 +93,25 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return '<div class="table-actions">'+
-                                    '<a onclick="getPlantDetails(' + row.plant_id + ')" data-color="#265ed7" style="color: rgb(38, 94, 215);"><i class="icon-copy dw dw-edit2"></i></a>'+
-                                    '<a onclick="deleteEntry('+ row.plant_id +')" data-color="#e95959" style="color: rgb(233, 89, 89);"><i class="icon-copy dw dw-delete-3"></i></a>'+
-                               '</div>';
+                        return '<div class="table-actions">' +
+                            '<a onclick="getPlantDetails(' + row.plant_id + ')" data-color="#265ed7" style="color: rgb(38, 94, 215);"><i class="icon-copy dw dw-edit2"></i></a>' +
+                            '<a onclick="deleteEntry(' + row.plant_id + ')" data-color="#e95959" style="color: rgb(233, 89, 89);"><i class="icon-copy dw dw-delete-3"></i></a>' +
+                            '</div>';
                     }
 
-                    
+
                 }
             ]
         });
     }
 
-    function getPlantDetails(id){
+    function getPlantDetails(id) {
         $(".div-scan").hide();
         $("#canvas_plant").show();
         $("#btn_submit").show();
         getEntryDetails(id);
         $("#canvas_propability").hide();
-        $("#plant_img").prop("required",false);
+        $("#plant_img").prop("required", false);
         $("#hidden_id").val(id);
     }
 

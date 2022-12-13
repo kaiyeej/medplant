@@ -5,8 +5,8 @@ $page = str_replace("/medplant/", "", $request);
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.html">
-            <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
-            <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo" />
+            <img src="vendors/logo/logo2.png" alt="" style="height: 70px;" class="dark-logo" />
+            <span style="color:black;">&nbsp;MedPlants</span>
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -27,7 +27,7 @@ $page = str_replace("/medplant/", "", $request);
                 </li>
                 <li>
                     <a href="./users" class="dropdown-toggle no-arrow <?= $page == "users" ? "active" : "" ; ?>">
-                        <span class="micon bi bi-person-plus-fill"></span><span class="mtext">Users</span>
+                        <span class="micon bi bi-person-plus"></span><span class="mtext">Users</span>
                     </a>
                 </li>
             </ul>

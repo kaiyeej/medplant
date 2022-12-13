@@ -31,18 +31,27 @@ class Profile extends Connection
 
     public function edit()
     {
-        $primary_id = $_SESSION['md_user_id'];
+        $primary_id = $_SESSION['mp_user_id'];
+        $form = array(
+            'user_fname' => $this->inputs['user_fname'],
+            'user_mname' => $this->inputs['user_mname'],
+            'user_lname' => $this->inputs['user_lname'],
+            'user_email' => $this->inputs['user_email'],
+            'user_contact_num' => $this->inputs['user_contact_num'],
+        );
+        return $this->update($this->table, $form, "$this->pk = '$primary_id'");
+    }
+
+    public function update_username()
+    {
+        $primary_id = $_SESSION['mp_user_id'];
         $username = $this->clean($this->inputs['username']);
         $is_exist = $this->select($this->table, $this->pk, "username = '$username' AND  $this->pk != '$primary_id'");
         if ($is_exist->num_rows > 0) {
             return 2;
         } else {
             $form = array(
-                'user_fname' => $this->inputs['user_fname'],
-                'user_mname' => $this->inputs['user_mname'],
-                'user_lname' => $this->inputs['user_lname'],
-                'user_email' => $this->inputs['user_email'],
-                'user_contact_num' => $this->inputs['user_contact_num'],
+                'username' => $username
             );
             return $this->update($this->table, $form, "$this->pk = '$primary_id'");
         }

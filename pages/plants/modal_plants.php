@@ -8,23 +8,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <input type="hidden" id="hidden_id" name="input[plant_name]">
+                        <input type="hidden" id="hidden_id" name="input[plant_id]">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_name]" id="plant_name" autocomplete="off" placeholder="Plant name" required>
+                                
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>File <span class="text-danger">*</span></label>
-                                <input type="file" class="form-control input-item" name="file" id="plant_img" autocomplete="off" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control input-item" name="input[plant_description]" id="plant_description" autocomplete="off"></textarea>
                             </div>
                         </div>
                     </div>

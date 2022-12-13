@@ -31,8 +31,8 @@ if (!isset($_SESSION["mp_user_id"])) {
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css" />
 
 	<link rel="stylesheet" href="vendors/sweetalert/sweetalert.css">
-	
-    <script type="text/javascript" src="vendors/js/jquery.min.js"></script>
+
+	<script type="text/javascript" src="vendors/js/jquery.min.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
@@ -63,6 +63,13 @@ if (!isset($_SESSION["mp_user_id"])) {
 		})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
 	</script>
 	<!-- End Google Tag Manager -->
+	<style>
+		.dt-checkbox input:checked~span {
+			background: #0075ff;
+			border-color: #0075ff;
+			color: #fff;
+		}
+	</style>
 </head>
 
 <body>
@@ -75,87 +82,6 @@ if (!isset($_SESSION["mp_user_id"])) {
 			</div>
 		</div>
 		<div class="header-right">
-			<div class="dashboard-setting user-notification">
-				<div class="dropdown">
-					<a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
-						<i class="dw dw-settings2"></i>
-					</a>
-				</div>
-			</div>
-			<div class="user-notification">
-				<div class="dropdown">
-					<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-						<i class="icon-copy dw dw-notification"></i>
-						<span class="badge notification-active"></span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-right">
-						<div class="notification-list mx-h-350 customscroll">
-							<ul>
-								<li>
-									<a href="#">
-										<img src="vendors/images/img.jpg" alt="" />
-										<h3>John Doe</h3>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed...
-										</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="vendors/images/photo1.jpg" alt="" />
-										<h3>Lea R. Frith</h3>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed...
-										</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="vendors/images/photo2.jpg" alt="" />
-										<h3>Erik L. Richards</h3>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed...
-										</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="vendors/images/photo3.jpg" alt="" />
-										<h3>John Doe</h3>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed...
-										</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="vendors/images/photo4.jpg" alt="" />
-										<h3>Renee I. Hansen</h3>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed...
-										</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="vendors/images/img.jpg" alt="" />
-										<h3>Vicki M. Coleman</h3>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed...
-										</p>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="user-info-dropdown">
 				<div class="dropdown" style="padding: 15px 0;">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -276,7 +202,7 @@ if (!isset($_SESSION["mp_user_id"])) {
 	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
 	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
 
-    <script type='text/javascript'>
+	<script type='text/javascript'>
 		<?php
 		echo "var route_settings = " . $route_settings . ";\n";
 		echo "var user_profile = " . $user_profile . ";\n";
@@ -286,7 +212,7 @@ if (!isset($_SESSION["mp_user_id"])) {
 		var modal_detail_status = 0;
 		$(document).ready(function() {
 
-			
+
 			$(".select2").select2();
 
 			$(".select2").css({
@@ -302,13 +228,13 @@ if (!isset($_SESSION["mp_user_id"])) {
 				$(this).addClass("active");
 			});
 
-			
+
 			$(".main_username_label").html(user_profile[0]);
 			$(".main_fullname_label").html(user_profile[1]);
 			$(".main_category_label").html(user_profile[2]);
 			$(".main_email_label").html(user_profile[3]);
 			$(".main_date_label").html(user_profile[4]);
-			
+
 		});
 
 		function logout() {
@@ -413,8 +339,7 @@ if (!isset($_SESSION["mp_user_id"])) {
 				cache: false,
 				processData: false,
 				success: function(data) {
-					route_settings.class_name != "SharedDocuments" ? getEntries() : "";
-
+					getEntries();
 					var json = JSON.parse(data);
 					if (route_settings.has_detail == 1) {
 						if (json.data > 0) {
@@ -424,6 +349,8 @@ if (!isset($_SESSION["mp_user_id"])) {
 							hidden_id > 0 ? getEntryDetails2(hidden_id) : getEntryDetails2(json.data);
 						} else if (json.data == -2) {
 							entry_already_exists();
+						} else if (json.data > 0){
+							getPlantDetails(json.data);
 						} else {
 							failed_query(json);
 						}
@@ -438,7 +365,7 @@ if (!isset($_SESSION["mp_user_id"])) {
 						}
 					}
 					$("#btn_submit").prop('disabled', false);
-					$("#btn_submit").html("<span class='fa fa-check-circle'></span> Submit");
+					$("#btn_submit").html("Save");
 				}
 			});
 		});
@@ -480,7 +407,53 @@ if (!isset($_SESSION["mp_user_id"])) {
 			}
 		}
 
-		function deleteEntry() {
+		function deleteEntry(id) {
+
+			swal({
+					title: "Are you sure?",
+					text: "You will not be able to recover these entry!",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonClass: "btn-danger",
+					cancelButtonClass: "btn-primary",
+					confirmButtonText: "Yes, delete it!",
+					cancelButtonText: "No, cancel!",
+					closeOnConfirm: false,
+					closeOnCancel: false
+				},
+				function(isConfirm) {
+					if (isConfirm) {
+						
+						$.ajax({
+							type: "POST",
+							url: "controllers/sql.php?c=" + route_settings.class_name + "&q=delete_entry",
+							data: {
+								input: {
+									id: id
+								}
+							},
+							success: function(data) {
+								getEntries();
+								var json = JSON.parse(data);
+								console.log(json);
+								if (json.data == 1) {
+									success_delete();
+								} else {
+									failed_query(json);
+								}
+							}
+						});
+
+						$("#btn_delete").prop('disabled', true);
+
+					} else {
+						swal("Cancelled", "Entries are safe :)", "error");
+					}
+				});
+
+		}
+
+		function deleteEntries() {
 
 			var count_checked = $("input[class='dt_id']:checked").length;
 
@@ -620,7 +593,7 @@ if (!isset($_SESSION["mp_user_id"])) {
 						$("#modalEntry2").modal('hide');
 					}
 					$("#btn_submit_2").prop('disabled', false);
-					$("#btn_submit_2").html("<span class='fa fa-check-circle'></span> Submit");
+					$("#btn_submit_2").html("Save");
 				}
 			});
 		});
@@ -778,7 +751,6 @@ if (!isset($_SESSION["mp_user_id"])) {
 			location.reload();
 
 		}
-
 	</script>
 
 

@@ -69,6 +69,16 @@ if (!isset($_SESSION["mp_user_id"])) {
 			border-color: #0075ff;
 			color: #fff;
 		}
+
+		.sidebar-light .sidebar-menu>ul>li>.dropdown-toggle.active {
+			background-color: #4caf50;
+			color: #fff;
+		}
+
+		.sidebar-light .sidebar-menu>ul>li>.dropdown-toggle.hover {
+			background-color: #4caf50;
+			color: #fff;
+		}
 	</style>
 </head>
 
@@ -349,7 +359,7 @@ if (!isset($_SESSION["mp_user_id"])) {
 							hidden_id > 0 ? getEntryDetails2(hidden_id) : getEntryDetails2(json.data);
 						} else if (json.data == -2) {
 							entry_already_exists();
-						} else if (json.data > 0){
+						} else if (json.data > 0) {
 							getPlantDetails(json.data);
 						} else {
 							failed_query(json);
@@ -423,7 +433,7 @@ if (!isset($_SESSION["mp_user_id"])) {
 				},
 				function(isConfirm) {
 					if (isConfirm) {
-						
+
 						$.ajax({
 							type: "POST",
 							url: "controllers/sql.php?c=" + route_settings.class_name + "&q=delete_entry",

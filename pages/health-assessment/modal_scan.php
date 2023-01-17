@@ -31,61 +31,31 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_name]" id="plant_name" autocomplete="off" required>
+                                <input type="text" class="form-control input-item" name="input[assessment_name]" id="assessment_name" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Name Authority<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_name_authority]" id="plant_name_authority" autocomplete="off" required>
+                                <label>Local Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control input-item" name="input[assessment_local_name]" id="assessment_local_name" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Synonyms<span class="text-danger">*</span></label>
-                                <textarea class="form-control input-item" name="input[plant_synonyms]" id="plant_synonyms" autocomplete="off" style="height: 100px;" required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Taxonomy Class<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_taxonomy_class]" id="plant_taxonomy_class" autocomplete="off" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Taxonomy Family<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_taxonomy_family]" id="plant_taxonomy_family" autocomplete="off" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Taxonomy Genus<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_taxonomy_genus]" id="plant_taxonomy_genus" autocomplete="off" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Taxonomy Kingdom<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_taxonomy_kingdom]" id="plant_taxonomy_kingdom" autocomplete="off" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Taxonomy Order<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_taxonomy_order]" id="plant_taxonomy_order" autocomplete="off" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Taxonomy Phylum<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[plant_taxonomy_phylum]" id="plant_taxonomy_phylum" autocomplete="off" required>
+                                <label>Biological<span class="text-danger">*</span></label>
+                                <textarea class="form-control input-item" name="input[assessment_biological]" id="assessment_biological" autocomplete="off" required></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control input-item" name="input[plant_description]" id="plant_description" autocomplete="off"></textarea>
+                                <label>Prevention<span class="text-danger">*</span></label>
+                                <textarea class="form-control input-item" name="input[assessment_prevention]" id="assessment_prevention" autocomplete="off" style="height: 100px;" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Description<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control input-item" name="input[assessment_description]" id="assessment_description" autocomplete="off" required>
                             </div>
                         </div>
                     </div>

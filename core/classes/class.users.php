@@ -23,7 +23,7 @@ class Users extends Connection
                 'user_email' => $this->inputs['user_email'],
                 'date_added' => $this->getCurrentDate(),
                 'username' => $this->inputs['username'],
-                'password' => md5('$pass')
+                'password' => md5($pass)
             );
             return $this->insert($this->table, $form);
         }

@@ -22,9 +22,9 @@
                         <button type="button" onclick="scanPlant()" class="btn btn-success mt-2 mt-sm-0 btn-icon-text">
                             <i class="fa fa-plus"></i> Add New
                         </button>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
             <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
@@ -142,18 +142,18 @@
                 images: base64files,
                 // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
                 modifiers: ["crops_fast", "similar_images"],
-                plant_language: "en",
-                // plant details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Plant-details
-                plant_details: ["common_names",
-                    "url",
-                    "name_authority",
-                    "wiki_description",
-                    "taxonomy",
-                    "synonyms"
+                language: "en",
+                // disease details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Disease-details
+                disease_details: ["cause",
+                    "common_names",
+                    "classification",
+                    "description",
+                    "treatment",
+                    "url"
                 ],
             };
 
-            fetch('https://api.plant.id/v2/identify', {
+            fetch('https://api.plant.id/v2/health_assessment', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -164,24 +164,27 @@
                 .then(data => {
                     if (data.is_plant == true) {
                         console.log('Success:', data);
-                        console.log(data.suggestions[0]);
+                        console.log(data.health_assessment[0]);
                         $("#canvas_probability").show();
                         $("#canvas_plant").show();
                         $("#btn_submit").show();
 
-                        var k = data.suggestions[0];
-                        $("#plantid").val(k['id']);
-                        $("#plant_name").val(k['plant_name']);
-                        $("#plant_name_authority").val(k['plant_details'].name_authority);
-                        $("#plant_synonyms").val(k['plant_details'].synonyms);
-                        $("#plant_taxonomy_class").val(k['plant_details'].taxonomy['class']);
-                        $("#plant_taxonomy_family").val(k['plant_details'].taxonomy['family']);
-                        $("#plant_taxonomy_genus").val(k['plant_details'].taxonomy['genus']);
-                        $("#plant_taxonomy_kingdom").val(k['plant_details'].taxonomy['kingdom']);
-                        $("#plant_taxonomy_order").val(k['plant_details'].taxonomy['order']);
-                        $("#plant_taxonomy_phylum").val(k['plant_details'].taxonomy['phylum']);
-                        $("#plant_description").val(k['plant_details'].wiki_description['value']);
-                        $("#span_probability").html(k['probability']);
+                        var k = data.health_assessment['diseases'];
+                        $("#assessment_name").val(k['plant_details'].common_names);
+                        $("#assessment_local_name").val(k['plant_details'].local_name);
+                        $("#assessment_description").val(k['plant_details'].description);
+                        $("#assessment_biological").val(k['plant_details'].treatment['biological', 0]);
+                        
+                        // $("#plant_name_authority").val(k['plant_details'].name_authority);
+                        // $("#plant_synonyms").val(k['plant_details'].synonyms);
+                        // $("#plant_taxonomy_class").val(k['plant_details'].taxonomy['class']);
+                        // $("#plant_taxonomy_family").val(k['plant_details'].taxonomy['family']);
+                        // $("#plant_taxonomy_genus").val(k['plant_details'].taxonomy['genus']);
+                        // $("#plant_taxonomy_kingdom").val(k['plant_details'].taxonomy['kingdom']);
+                        // $("#plant_taxonomy_order").val(k['plant_details'].taxonomy['order']);
+                        // $("#plant_taxonomy_phylum").val(k['plant_details'].taxonomy['phylum']);
+                        // $("#plant_description").val(k['plant_details'].wiki_description['value']);
+                        // $("#span_probability").html(k['probability']);
 
                     } else {
                         swal("Cannot proceed!", "Item is not a plant.", "warning");

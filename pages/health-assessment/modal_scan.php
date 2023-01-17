@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-lg-12">
                             <span id="canvas_probability" class="badge badge-info">Probability: <strong id="span_probability"></strong></span>
-                            <span class="badge badge-info" id="canvas_probability">Status: <span id="span_healthy"></span></span>
+                            <span class="badge badge-info" id="canvas_healthy">Status: <span id="span_healthy"></span></span>
                         </div>
                     </div>
                     <hr class="div-scan">

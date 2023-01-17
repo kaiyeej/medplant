@@ -58,6 +58,7 @@
         $("#canvas_plant").hide();
         $("#btn_submit").hide();
         $("#canvas_probability").hide();
+        $("#canvas_healthy").hide();
         $("#assessment_img").prop("required", true);
     }
 
@@ -166,6 +167,7 @@
                         console.log('Success:', data);
                         //console.log(data.health_assessment['diseases']);
                         $("#canvas_probability").show();
+                        $("#canvas_healthy").show();
                         $("#canvas_plant").show();
                         $("#btn_submit").show();
                         var k = data.health_assessment['diseases'][0];

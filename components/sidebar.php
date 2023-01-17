@@ -4,7 +4,7 @@ $page = str_replace("/medplant/", "", $request);
 ?>
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
+        <a href="./">
             <img src="vendors/logo/logo2.png" alt="" style="height: 70px;" class="dark-logo" />
             <span style="color:black;">&nbsp;MedPlants</span>
         </a>

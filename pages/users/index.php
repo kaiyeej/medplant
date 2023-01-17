@@ -29,7 +29,7 @@
             </div>
             <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
                 <div id="dt_entries_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                    <table class="checkbox-datatable table hover data-table-export dataTable no-footer dtr-inline" id="dt_entries" role="grid">
+                    <table class="checkbox-datatable table hover responsive data-table-export dataTable no-footer dtr-inline" id="dt_entries" role="grid">
                         <thead>
                             <tr role="row">
                                 <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Fullname</th>

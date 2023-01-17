@@ -8,5 +8,5 @@ $classes = array(
     'Profile'           => $pre_class . 'profile.php',
     'Plants'            => $pre_class . 'plants.php',
     'LoginUser'         => $pre_class . 'loginuser.php',
-    
+    'HealthAssessment'  => $pre_class . 'healthassessment.php',
 );

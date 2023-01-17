@@ -21,6 +21,11 @@ $page = str_replace("/medplant/", "", $request);
                     </a>
                 </li>
                 <li>
+                    <a href="./health-assessment" class="dropdown-toggle no-arrow <?= $page == "health-assessment" ? "active" : "" ; ?>">
+                        <span class="micon bi bi-list-columns-reverse"></span><span class="mtext">Health Assessment</span>
+                    </a>
+                </li>
+                <li>
                     <a href="./plants" class="dropdown-toggle no-arrow <?= $page == "plants" ? "active" : "" ; ?>">
                         <span class="micon bi bi-tree"></span><span class="mtext">Plants</span>
                     </a>

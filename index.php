@@ -79,6 +79,13 @@ if (!isset($_SESSION["mp_user_id"])) {
 			background-color: #4caf50;
 			color: #fff;
 		}
+
+		.error-page h1 {
+			font-size: 210px;
+			text-shadow: 2px 2px 0 #8bc34a, 4px 4px 0 #fff, 8px 8px 0 #4caf50;
+			line-height: 1;
+			color: #181f48;
+		}
 	</style>
 </head>
 

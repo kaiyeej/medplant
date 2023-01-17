@@ -10,7 +10,7 @@ require_once '../core_mobile/config.php';
 $fname = $_REQUEST['fname'];
 $mname = $_REQUEST['mname'];
 $lname = $_REQUEST['lname'];
-$address = $_REQUEST['address'];
+$email = $_REQUEST['email'];
 $contactNumber = $_REQUEST['contactNumber'];
 $username = $_REQUEST['username'];
 $password = $_REQUEST['password'];
@@ -24,7 +24,7 @@ if (isset($username) && isset($password)) {
 
 	if ($row['counter'] == 0) {
 
-		$sql = $mysqli_connect->query("INSERT INTO tbl_users (`user_fname`, `user_mname`, `user_lname`, `address`, `contact_number`, `category`, `username`, `password`, `date_added`) VALUES ('$fname','$mname','$lname','$address','$contactNumber','U','$username',md5('$password'),'$date')");
+		$sql = $mysqli_connect->query("INSERT INTO tbl_users (`user_fname`, `user_mname`, `user_lname`, `user_email`, `user_contact_num`, `user_category`, `username`, `password`, `date_added`) VALUES ('$fname','$mname','$lname','$email','$contactNumber','U','$username',md5('$password'),'$date')");
 
 		if ($sql) {
 			$response["res"] =  $mysqli_connect->insert_id;

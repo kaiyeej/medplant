@@ -33,7 +33,7 @@
                         <thead>
                             <tr role="row">
                                 <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Image</th>
-                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Assessment Name</th>
+                                <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Assessment</th>
                                 <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Common Name</th>
                                 <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Date Added</th>
                                 <th class="table-plus datatable-nosort sorting_asc" rowspan="1" colspan="1">Action</th>
@@ -75,14 +75,14 @@
             ],
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return "<img src='vendors/file/" + row.assessment_img + "' style='max-height: 80px !important;' onclick=previewImage('" + row.assessment_img + "')>";
+                        return "<img src='vendors/assessment/" + row.assessment_img + "' style='max-height: 80px !important;' onclick=previewImage('" + row.assessment_img + "')>";
                     }
                 },
                 {
                     "data": "assessment_name"
                 },
                 {
-                    "data": "assessment_common_names"
+                    "data": "assessment_common_name"
                 },
                 {
                     "data": "date_added"
@@ -164,28 +164,28 @@
                 .then(data => {
                     if (data.is_plant == true) {
                         console.log('Success:', data);
-                        console.log(data.health_assessment[0]);
+                        //console.log(data.health_assessment['diseases']);
                         $("#canvas_probability").show();
                         $("#canvas_plant").show();
                         $("#btn_submit").show();
+                        var k = data.health_assessment['diseases'][0];
+                        $("#entity_id").val(k['id']);
 
-                        var k = data.health_assessment['diseases'];
-                        $("#assessment_name").val(k['plant_details'].common_names);
-                        $("#assessment_local_name").val(k['plant_details'].local_name);
-                        $("#assessment_description").val(k['plant_details'].description);
-                        $("#assessment_biological").val(k['plant_details'].treatment['biological', 0]);
+                        if(data.health_assessment['is_healthy'] == true){
+                            $("#span_healthy").html("<strong> Healthy </strong>");
+                            $("#is_healthy").val(1);
+                        }else{
+                            $("#span_healthy").html("<strong style='color: #f44336;'> Not Healthy </strong>");
+                            $("#is_healthy").val(0);
+                        }
+
+                        $("#span_probability").html(k['probability']*100);
+                        $("#assessment_name").val(k['name']);
+                        $("#assessment_common_name").val(k['disease_details'].common_names[0]);
+                        $("#assessment_description").val(k['disease_details'].description);
+                        $("#assessment_biological").val(k['disease_details'].treatment['biological']);
+                        $("#assessment_prevention").val(k['disease_details'].treatment['prevention']);
                         
-                        // $("#plant_name_authority").val(k['plant_details'].name_authority);
-                        // $("#plant_synonyms").val(k['plant_details'].synonyms);
-                        // $("#plant_taxonomy_class").val(k['plant_details'].taxonomy['class']);
-                        // $("#plant_taxonomy_family").val(k['plant_details'].taxonomy['family']);
-                        // $("#plant_taxonomy_genus").val(k['plant_details'].taxonomy['genus']);
-                        // $("#plant_taxonomy_kingdom").val(k['plant_details'].taxonomy['kingdom']);
-                        // $("#plant_taxonomy_order").val(k['plant_details'].taxonomy['order']);
-                        // $("#plant_taxonomy_phylum").val(k['plant_details'].taxonomy['phylum']);
-                        // $("#plant_description").val(k['plant_details'].wiki_description['value']);
-                        // $("#span_probability").html(k['probability']);
-
                     } else {
                         swal("Cannot proceed!", "Item is not a plant.", "warning");
                         $("#canvas_plant").hide();
@@ -198,7 +198,7 @@
 
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                    //console.error('Error:', error);
 
                     $("#btn_scan").prop("disabled", false);
                     $("#btn_scan").html("Scan");

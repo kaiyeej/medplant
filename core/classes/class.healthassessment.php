@@ -8,32 +8,28 @@ class HealthAssessment extends Connection
 
     public function add()
     {
-        $plantid = $this->clean($this->inputs['plantid']);
-        $is_exist = $this->select($this->table, $this->pk, "plantid = '$plantid'");
+        $entity_id = $this->clean($this->inputs['entity_id']);
+        $is_exist = $this->select($this->table, $this->pk, "entity_id = '$entity_id'");
         if ($is_exist->num_rows > 0) {
             $id = $is_exist->fetch_array();
             return $id[0];
         } else {
             if (isset($_FILES['file']['tmp_name'])) {
-                $plant_img = $_FILES['file']['name'];
-                move_uploaded_file($_FILES['file']['tmp_name'], '../vendors/file/' . $plant_img);
+                $assessment_img = $_FILES['file']['name'];
+                move_uploaded_file($_FILES['file']['tmp_name'], '../vendors/assessment/' . $assessment_img);
             } else {
-                $plant_img = "";
+                $assessment_img = "";
             }
 
             $form = array(
                 $this->name                 =>  $this->clean($this->inputs[$this->name]),
-                'plantid'                   => $this->clean($this->inputs['plantid']),
-                'plant_name_authority'      => $this->clean($this->inputs['plant_name_authority']),
-                'plant_synonyms'            => $this->clean($this->inputs['plant_synonyms']),
-                'plant_taxonomy_class'      => $this->clean($this->inputs['plant_taxonomy_class']),
-                'plant_taxonomy_family'     => $this->clean($this->inputs['plant_taxonomy_family']),
-                'plant_taxonomy_genus'      => $this->clean($this->inputs['plant_taxonomy_genus']),
-                'plant_taxonomy_kingdom'    => $this->clean($this->inputs['plant_taxonomy_kingdom']),
-                'plant_taxonomy_order'      => $this->clean($this->inputs['plant_taxonomy_order']),
-                'plant_taxonomy_phylum'     => $this->clean($this->inputs['plant_taxonomy_phylum']),
-                'plant_description'         => $this->clean($this->inputs['plant_description']),
-                'plant_img'                 => $plant_img,
+                'entity_id'                 => $this->clean($this->inputs['entity_id']),
+                'is_healthy'                => $this->clean($this->inputs['is_healthy']),
+                'assessment_common_name'    => $this->clean($this->inputs['assessment_common_name']),
+                'assessment_description'    => $this->clean($this->inputs['assessment_description']),
+                'assessment_biological'     => $this->clean($this->inputs['assessment_biological']),
+                'assessment_prevention'     => $this->clean($this->inputs['assessment_prevention']),
+                'assessment_img'                 => $assessment_img,
             );
 
             return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."'");
@@ -49,7 +45,7 @@ class HealthAssessment extends Connection
         } else {
             $form = array(
                 $this->name                 =>  $this->clean($this->inputs[$this->name]),
-                'plantid'                   => $this->clean($this->inputs['plantid']),
+                'entity_id'                   => $this->clean($this->inputs['entity_id']),
                 'plant_name_authority'      => $this->clean($this->inputs['plant_name_authority']),
                 'plant_synonyms'            => $this->clean($this->inputs['plant_synonyms']),
                 'plant_taxonomy_class'      => $this->clean($this->inputs['plant_taxonomy_class']),

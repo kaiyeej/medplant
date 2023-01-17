@@ -22,40 +22,42 @@
                         </div>
                         <div class="col-lg-12">
                             <span id="canvas_probability" class="badge badge-info">Probability: <strong id="span_probability"></strong></span>
+                            <span class="badge badge-info" id="canvas_probability">Status: <span id="span_healthy"></span></span>
                         </div>
                     </div>
                     <hr class="div-scan">
-                    <input type="hidden" id="hidden_id" name="input[plant_id]">
-                    <input type="hidden" class="form-control input-item" id="plantid" name="input[plantid]">
+                    <input type="hidden" id="hidden_id" name="input[assessment_id]">
+                    <input type="hidden" class="form-control input-item" id="entity_id" name="input[entity_id]">
+                    <input type="hidden" class="form-control input-item" id="is_healthy" name="input[is_healthy]">
                     <div class="row" id="canvas_plant">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Name <span class="text-danger">*</span></label>
+                                <label>Assessment <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control input-item" name="input[assessment_name]" id="assessment_name" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Local Name<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[assessment_local_name]" id="assessment_local_name" autocomplete="off" required>
+                                <label>Common Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control input-item" name="input[assessment_common_name]" id="assessment_common_name" autocomplete="off" required>
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Biological<span class="text-danger">*</span></label>
-                                <textarea class="form-control input-item" name="input[assessment_biological]" id="assessment_biological" autocomplete="off" required></textarea>
+                                <textarea class="form-control input-item"  style="height: 100px;" name="input[assessment_biological]" id="assessment_biological" autocomplete="off" required></textarea>
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Prevention<span class="text-danger">*</span></label>
                                 <textarea class="form-control input-item" name="input[assessment_prevention]" id="assessment_prevention" autocomplete="off" style="height: 100px;" required></textarea>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Description<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[assessment_description]" id="assessment_description" autocomplete="off" required>
+                                <textarea class="form-control input-item" name="input[assessment_description]" id="assessment_description" autocomplete="off" style="height: 100px;" required>></textarea>
                             </div>
                         </div>
                     </div>

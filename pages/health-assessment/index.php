@@ -139,7 +139,7 @@
             console.log(base64files)
 
             const data = {
-                api_key: "DSz7fUyVt5Gj6LXeHlDPayqLLIAGz2VlcrK8voGQcUUT4DFWjI",
+                api_key: "q10yUB5d4CeEX0HMvsSmGdjikogR7kX4oW8idHOfJeqWHy0mnW",
                 images: base64files,
                 // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
                 modifiers: ["crops_fast", "similar_images"],

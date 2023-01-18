@@ -199,7 +199,7 @@
 
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                    //console.error('Error:', error);
 
                     $("#btn_scan").prop("disabled", false);
                     $("#btn_scan").html("Scan");

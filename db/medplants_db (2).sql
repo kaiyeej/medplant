@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2023 at 04:33 AM
+-- Generation Time: Jan 18, 2023 at 09:23 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -30,15 +30,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_health_assessment` (
   `assessment_id` int(11) NOT NULL,
-  `entity_id` int(11) NOT NULL,
-  `assessment_img` text NOT NULL,
-  `assessment_name` varchar(50) NOT NULL,
-  `assessment_probability` varchar(10) NOT NULL,
-  `assessment_disease_details` text NOT NULL,
-  `assessment_common_names` varchar(50) NOT NULL,
+  `assessment_name` varchar(50) NOT NULL DEFAULT '0',
+  `entity_id` int(11) NOT NULL DEFAULT '0',
+  `is_healthy` int(1) NOT NULL DEFAULT '0',
+  `assessment_common_name` varchar(50) NOT NULL DEFAULT '0',
   `assessment_description` text NOT NULL,
+  `assessment_biological` text NOT NULL,
+  `assessment_prevention` text NOT NULL,
+  `assessment_img` text NOT NULL,
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_health_assessment`
+--
+
+INSERT INTO `tbl_health_assessment` (`assessment_id`, `assessment_name`, `entity_id`, `is_healthy`, `assessment_common_name`, `assessment_description`, `assessment_biological`, `assessment_prevention`, `assessment_img`, `date_added`) VALUES
+(1, 'nutrient-related issue', 0, 1, 'nutritional disease', 'Nutrient-related abiotic disorders are caused by deficiency or toxicity of macronutrients and micronutrients essential for the plant. This can be caused by a suboptimal amount of nutrients in the soil or unsuitable conditions for nutrients uptake.', 'Replant the plant into fresh soil rich in nutrients.', 'Change the soil regularly. Plants should be repotted when the soil is compacted, depleted of nutrients, and no longer retains water.,Choose suitable neighboring plants. Plants with similar nutrient requirements should not be planted close to each other.', 'DCTM_Penguin_UK_DK_AL458052_zs2mia.webp', '2023-01-17 16:51:19');
 
 -- --------------------------------------------------------
 
@@ -68,10 +76,10 @@ CREATE TABLE `tbl_plants` (
 --
 
 INSERT INTO `tbl_plants` (`plant_id`, `plantid`, `plant_name`, `plant_name_authority`, `plant_synonyms`, `plant_taxonomy_class`, `plant_taxonomy_family`, `plant_taxonomy_genus`, `plant_taxonomy_kingdom`, `plant_taxonomy_order`, `plant_taxonomy_phylum`, `plant_description`, `plant_img`, `date_added`) VALUES
-(6, 383552249, 'Dracaena fragrans', 'Dracaena fragrans (L.) Ker Gawl.', 'Aletris fragrans,Aloe fragrantissima,Cordyline fra', 'Magnoliopsida', 'Asparagaceae', 'Dracaena', 'Plantae', 'Asparagales', 'Magnoliophyta', 'Dracaena fragrans (cornstalk dracaena), is a flowering plant species that is native throughout tropical Africa, from Sudan south to Mozambique, west to CÃ´te d&#39;Ivoire and southwest to Angola, growing in upland regions at 600â€“2,250 m (1,970â€“7,380 ft) altitude.', '1623167350-screen-shot-2021-06-08-at-11-48-38-am-1623167334.png', '2022-12-13 10:28:44'),
 (7, 383552303, 'Alocasia', 'Alocasia (Schott) G.Don', 'Ensolenanthe,Panzhuyuia,Schizocasia,Xenophya', 'Magnoliopsida', 'Araceae', 'Alocasia', 'Plantae', 'Alismatales', 'Magnoliophyta', 'Alocasia is a genus of broad-leaved rhizomatous or tuberous perennial flowering plants from the family Araceae. There are 79 species native to tropical and subtropical Asia to Eastern Australia, and widely cultivated elsewhere.', 'alocasia-frydek-plant-profile-ce6a16be606948a8a87217d335a6816f.jpg', '2022-12-13 10:29:16'),
 (8, 383552540, 'Monstera deliciosa', 'Monstera deliciosa Liebm.', 'Monstera borsigiana,Monstera deliciosa var. borsig', 'Magnoliopsida', 'Araceae', 'Monstera', 'Plantae', 'Alismatales', 'Magnoliophyta', 'Monstera deliciosa, the Swiss cheese plant, is a species of flowering plant native to tropical forests of southern Mexico, south to Panama. It has been introduced to many tropical areas, and has become a mildly invasive species in Hawaii, Seychelles, Ascension Island and the Society Islands. It is very widely grown in temperate zones as a houseplant.\r\nThe plant may be confused with Thaumatophyllum bipinnatifidum, known as the Split-leaf Philodendron or Tree Philodendron, as they have similar leaves and growing habits. However, the ingestion of Thaumatophyllum bipinnatifidum may cause irritation to the digestive tract and will induce internal swelling. The sap is also known to irritate the skin.', 'house-plants-1629187361.jpg', '2022-12-13 10:32:00'),
-(9, 390387474, 'Helianthus annuus', 'Helianthus annuus L.', 'Helianthus annuus f. fallax,Helianthus annuus f. l', 'Magnoliopsida', 'Asteraceae', 'Helianthus', 'Plantae', 'Asterales', 'Magnoliophyta', 'Helianthus annuus, the common sunflower, is a large annual forb of the genus Helianthus grown as a crop for its edible oil and edible fruits. This sunflower species is also used as wild bird food, as livestock forage (as a meal or a silage plant), in some industrial applications, and as an ornamental in domestic gardens. The plant was first domesticated in the Americas. Wild Helianthus annuus is a widely branched annual plant with many flower heads. The domestic sunflower, however, often possesses only a single large inflorescence (flower head) atop an unbranched stem. The name sunflower may derive from the flower&#39;s head&#39;s shape, which resembles the sun.\r\nSunflower seeds were brought to Europe from the Americas in the 16th century, where, along with sunflower oil, they became a widespread cooking ingredient.', 'DCTM_Penguin_UK_DK_AL458052_zs2mia.webp', '2023-01-17 11:01:33');
+(9, 390387474, 'Helianthus annuus', 'Helianthus annuus L.', 'Helianthus annuus f. fallax,Helianthus annuus f. l', 'Magnoliopsida', 'Asteraceae', 'Helianthus', 'Plantae', 'Asterales', 'Magnoliophyta', 'Helianthus annuus, the common sunflower, is a large annual forb of the genus Helianthus grown as a crop for its edible oil and edible fruits. This sunflower species is also used as wild bird food, as livestock forage (as a meal or a silage plant), in some industrial applications, and as an ornamental in domestic gardens. The plant was first domesticated in the Americas. Wild Helianthus annuus is a widely branched annual plant with many flower heads. The domestic sunflower, however, often possesses only a single large inflorescence (flower head) atop an unbranched stem. The name sunflower may derive from the flower&#39;s head&#39;s shape, which resembles the sun.\r\nSunflower seeds were brought to Europe from the Americas in the 16th century, where, along with sunflower oil, they became a widespread cooking ingredient.', 'DCTM_Penguin_UK_DK_AL458052_zs2mia.webp', '2023-01-17 11:01:33'),
+(10, 383552249, 'Dracaena fragrans', 'Dracaena fragrans (L.) Ker Gawl.', 'Aletris fragrans,Aloe fragrantissima,Cordyline fra', 'Magnoliopsida', 'Asparagaceae', 'Dracaena', 'Plantae', 'Asparagales', 'Magnoliophyta', 'Dracaena fragrans (cornstalk dracaena), is a flowering plant species that is native throughout tropical Africa, from Sudan south to Mozambique, west to CÃ´te d&#39;Ivoire and southwest to Angola, growing in upland regions at 600â€“2,250 m (1,970â€“7,380 ft) altitude.', '1623167350-screen-shot-2021-06-08-at-11-48-38-am-1623167334.png', '2022-12-13 10:28:44');
 
 -- --------------------------------------------------------
 
@@ -133,19 +141,19 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_health_assessment`
 --
 ALTER TABLE `tbl_health_assessment`
-  MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_plants`
 --
 ALTER TABLE `tbl_plants`
-  MODIFY `plant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `plant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

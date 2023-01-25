@@ -33,6 +33,8 @@ if (!isset($_SESSION["mp_user_id"])) {
 	<link rel="stylesheet" href="vendors/sweetalert/sweetalert.css">
 
 	<script type="text/javascript" src="vendors/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>

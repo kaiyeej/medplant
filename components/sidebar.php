@@ -31,6 +31,11 @@ $page = str_replace("/medplant/", "", $request);
                     </a>
                 </li>
                 <li>
+                    <a href="./scan" class="dropdown-toggle no-arrow <?= $page == "scan" ? "active" : "" ; ?>">
+                        <span class="micon bi bi-qr-code-scan"></span><span class="mtext">Scan</span>
+                    </a>
+                </li>
+                <li>
                     <a href="./users" class="dropdown-toggle no-arrow <?= $page == "users" ? "active" : "" ; ?>">
                         <span class="micon bi bi-person-plus"></span><span class="mtext">Users</span>
                     </a>

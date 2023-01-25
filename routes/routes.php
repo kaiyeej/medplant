@@ -25,6 +25,10 @@ $routes = array(
         'class_name' => 'Profile',
         'has_detail' => 0
     ),
+    "scan" => array(
+        'class_name' => 'Plants',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 

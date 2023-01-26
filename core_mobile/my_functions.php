@@ -1,5 +1,9 @@
 <?php
-
+function clean($inputs)
+{
+	global $mysqli_connect;
+	return mysqli_real_escape_string($mysqli_connect, $inputs);
+}
 function getCurrentDate()
 {
 	ini_set('date.timezone', 'UTC');

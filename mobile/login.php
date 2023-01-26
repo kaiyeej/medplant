@@ -8,8 +8,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require_once '../core_mobile/config.php';
 
 // //$data = json_decode(file_get_contents("php://input"));
-$username = $_REQUEST['username'];
-$password = $_REQUEST['password'];
+$username = clean($_REQUEST['username']);
+$password = clean($_REQUEST['password']);
 // $id_token = $_REQUEST['idtoken'];
 $response_array['array_data'] = array();
 if (isset($username) && isset($password)) {

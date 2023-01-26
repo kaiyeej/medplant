@@ -40,25 +40,25 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Common Name<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control input-item" name="input[assessment_common_name]" id="assessment_common_name" autocomplete="off" >
+                                <input type="text" class="form-control input-item" name="input[assessment_common_name]" id="assessment_common_name" autocomplete="off">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Biological<span class="text-danger">*</span></label>
-                                <textarea class="form-control input-item" style="height: 100px;" name="input[assessment_biological]" id="assessment_biological" autocomplete="off" ></textarea>
+                                <textarea class="form-control input-item" style="height: 100px;" name="input[assessment_biological]" id="assessment_biological" autocomplete="off"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Prevention<span class="text-danger">*</span></label>
-                                <textarea class="form-control input-item" name="input[assessment_prevention]" id="assessment_prevention" autocomplete="off" style="height: 100px;" ></textarea>
+                                <textarea class="form-control input-item" name="input[assessment_prevention]" id="assessment_prevention" autocomplete="off" style="height: 100px;"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Description<span class="text-danger">*</span></label>
-                                <textarea class="form-control input-item" name="input[assessment_description]" id="assessment_description" autocomplete="off" style="height: 100px;" >></textarea>
+                                <textarea class="form-control input-item" name="input[assessment_description]" id="assessment_description" autocomplete="off" style="height: 100px;">></textarea>
                             </div>
                         </div>
                     </div>
@@ -99,6 +99,7 @@
                         hidden_id > 0 ? success_update() : success_add();
                         hidden_id > 0 ? $("#modalEntry2").modal('hide') : '';
                         hidden_id > 0 ? getEntryDetails2(hidden_id) : getEntryDetails2(json.data);
+                        
                     } else if (json.data == -2) {
                         entry_already_exists();
                     } else if (json.data > 0) {
@@ -106,6 +107,9 @@
                     } else {
                         failed_query(json);
                     }
+                    setTimeout(function() {
+                        location.reload()
+                    }, 3000);
                 } else {
                     if (json.data == 1) {
                         hidden_id > 0 ? success_update() : success_add();
@@ -115,6 +119,9 @@
                     } else {
                         failed_query(json);
                     }
+                    setTimeout(function() {
+                        location.reload()
+                    }, 3000);
                 }
                 $("#btn_submit").prop('disabled', false);
                 $("#btn_submit").html("Save");

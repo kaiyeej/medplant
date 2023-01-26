@@ -36,6 +36,43 @@ class HealthAssessment extends Connection
         }
     }
 
+    public function scan()
+    {
+        $entity_id = $this->clean($this->inputs['entity_id']);
+        $is_exist = $this->select($this->table, $this->pk, "entity_id = '$entity_id'");
+        if ($is_exist->num_rows > 0) {
+            $id = $is_exist->fetch_array();
+            return $id[0];
+        } else {
+
+            $img = $this->inputs['assessment_img'];
+            $folderPath = "../vendors/assessment/";
+          
+            $image_parts = explode(";base64,", $img);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+          
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = uniqid() . '.png';
+          
+            $file = $folderPath . $fileName;
+            file_put_contents($file, $image_base64);
+
+            $form = array(
+                $this->name                 =>  $this->clean($this->inputs[$this->name]),
+                'entity_id'                 => $this->clean($this->inputs['entity_id']),
+                'is_healthy'                => $this->clean($this->inputs['is_healthy']),
+                'assessment_common_name'    => $this->clean($this->inputs['assessment_common_name']),
+                'assessment_description'    => $this->clean($this->inputs['assessment_description']),
+                'assessment_biological'     => $this->clean($this->inputs['assessment_biological']),
+                'assessment_prevention'     => $this->clean($this->inputs['assessment_prevention']),
+                'assessment_img'            => $fileName,
+            );
+
+            return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."'");
+        }
+    }
+
     public function edit()
     {
         $primary_id = $this->inputs[$this->pk];

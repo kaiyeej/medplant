@@ -113,7 +113,7 @@
     }
 
     function previewImage(doc_file) {
-        var src = "vendors/file/" + doc_file;
+        var src = "vendors/assessment/" + doc_file;
         $("#img_doc").attr('src', src);
         $("#modalUpload").modal('show');
     }
@@ -139,7 +139,7 @@
             console.log(base64files)
 
             const data = {
-                api_key: "q10yUB5d4CeEX0HMvsSmGdjikogR7kX4oW8idHOfJeqWHy0mnW",
+                api_key: "eqrx10kK3Oz53iDgiZytx1q71pr6Mk1hnbIZCFuZIECchVuW0D",
                 images: base64files,
                 // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
                 modifiers: ["crops_fast", "similar_images"],
@@ -171,7 +171,7 @@
                         $("#canvas_plant").show();
                         $("#btn_submit").show();
                         var k = data.health_assessment['diseases'][0];
-                        $("#entity_id").val(k['id']);
+                        $("#entity_id").val(data.id);
 
                         if(data.health_assessment['is_healthy'] == true){
                             $("#span_healthy").html("<strong> Healthy </strong>");
@@ -183,7 +183,11 @@
 
                         $("#span_probability").html(k['probability']*100);
                         $("#assessment_name").val(k['name']);
-                        $("#assessment_common_name").val(k['disease_details'].common_names[0]);
+                        if(k['disease_details'].common_names != null){
+                            $("#assessment_common_name").val(k['disease_details'].common_names[0]);
+                        }else{
+                            $("#assessment_common_name").val('');
+                        }
                         $("#assessment_description").val(k['disease_details'].description);
                         $("#assessment_biological").val(k['disease_details'].treatment['biological']);
                         $("#assessment_prevention").val(k['disease_details'].treatment['prevention']);

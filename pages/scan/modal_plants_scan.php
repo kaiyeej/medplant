@@ -13,7 +13,7 @@
                                 <div id="plant_camera"></div>
                                 <div id="plant_result"></div>
                                 <br />
-                                <input type="text" class="plant_img" name="input[plant_img]" id="plant_img">
+                                <input type="hidden" class="plant_img" name="input[plant_img]" id="plant_img">
 
                                 <button id="btn_plant_scan" class="btn btn-success" onClick="take_snapshot2()"><i class="bi bi-camera-fill"></i> Capture and Scan</button>
                             </center>
@@ -23,6 +23,9 @@
                     <input type="hidden" id="hidden_id" name="input[plant_id]">
                     <input type="hidden" class="form-control input-item" id="plantid" name="input[plantid]">
                     <div class="row" id="canvas_plant2">
+                        <div class="col-lg-12">
+                            <span id="canvas_probability2" class="badge badge-info">Probability: <strong id="span_probability2"></strong></span>
+                        </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Name <span class="text-danger">*</span></label>
@@ -98,3 +101,49 @@
         </div>
     </div>
 </form>
+<script>
+    $("#frm_plants_submit").submit(function(e) {
+        e.preventDefault();
+
+        $("#btn_submit2").prop('disabled', true);
+        $("#btn_submit2").html("<span class='fa fa-spinner fa-spin'></span> Submitting ...");
+
+        var hidden_id = $("#hidden_id").val();
+        $.ajax({
+            type: "POST",
+            url: "controllers/sql.php?c=Plants&q=scan",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                getEntries();
+                var json = JSON.parse(data);
+                if (route_settings.has_detail == 1) {
+                    if (json.data > 0) {
+                        $("#modalPlants").modal('hide')
+                        hidden_id > 0 ? success_update() : success_add();
+                        hidden_id > 0 ? getEntryDetails2(hidden_id) : getEntryDetails2(json.data);
+                    } else if (json.data == -2) {
+                        entry_already_exists();
+                    } else if (json.data > 0) {
+                        getPlantDetails(json.data);
+                    } else {
+                        failed_query(json);
+                    }
+                } else {
+                    if (json.data == 1) {
+                        hidden_id > 0 ? success_update() : success_add();
+                        $("#modalPlants").modal('hide');
+                    } else if (json.data == 2) {
+                        entry_already_exists();
+                    } else {
+                        failed_query(json);
+                    }
+                }
+                $("#btn_submit2").prop('disabled', false);
+                $("#btn_submit2").html("Save");
+            }
+        });
+    });
+</script>

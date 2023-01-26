@@ -33,7 +33,7 @@
         $("#modalPlants").modal("show");
         $(".div-scan").show();
         $("#canvas_plant2").hide();
-        $("#btn_submit").hide();
+        $("#btn_submit2").hide();
         $("#canvas_probability2").hide();
         $("#plant_img").prop("required", true);
 
@@ -61,7 +61,6 @@
         $("#btn_plant_scan").prop("disabled", true);
         $("#btn_plant_scan").html("<span class='fa fa-spinner fa-spin'></span>");
 
-
         var plant_img = $("#plant_img").val();
 
         var a_img = btoa(plant_img);
@@ -70,10 +69,8 @@
         const data = {
             api_key: "eqrx10kK3Oz53iDgiZytx1q71pr6Mk1hnbIZCFuZIECchVuW0D",
             images: [promises],
-            // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
             modifiers: ["crops_fast", "similar_images"],
             plant_language: "en",
-            // plant details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Plant-details
             plant_details: ["common_names",
                 "url",
                 "name_authority",
@@ -95,8 +92,8 @@
                 if (data.is_plant == true) {
                     console.log('Success:', data);
                     console.log(data.suggestions[0]);
-                    $("#canvas_probability").show();
-                    $("#canvas_plant").show();
+                    $("#canvas_probability2").show();
+                    $("#canvas_plant2").show();
                     $("#btn_submit2").show();
 
                     var k = data.suggestions[0];
@@ -111,7 +108,7 @@
                     $("#plant_taxonomy_order").val(k['plant_details'].taxonomy['order']);
                     $("#plant_taxonomy_phylum").val(k['plant_details'].taxonomy['phylum']);
                     $("#plant_description").val(k['plant_details'].wiki_description['value']);
-                    $("#span_probability").html(k['probability']);
+                    $("#span_probability2").html(k['probability']);
 
                 } else {
                     swal("Cannot proceed!", "Item is not a plant.", "warning");
@@ -120,15 +117,15 @@
                     $("#btn_submit2").hide();
                 }
 
-                $("#btn_scan").prop("disabled", false);
-                $("#btn_scan").html("Scan");
+                $("#btn_plant_scan").prop("disabled", false);
+                $("#btn_plant_scan").html("Scan");
 
             })
             .catch((error) => {
                 console.error('Error:', error);
 
-                $("#btn_scan").prop("disabled", false);
-                $("#btn_scan").html("Scan");
+                $("#btn_plant_scan").prop("disabled", false);
+                $("#btn_plant_scan").html("Scan");
             });
     }
 

@@ -40,6 +40,6 @@ if ($sql) {
 }
 
 
-$response["res"] = $image;
+// $response["res"] = $image;
 array_push($response_array['array_data'], $response);
 echo json_encode($response_array);

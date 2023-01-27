@@ -11,6 +11,7 @@ $plantName = clean($_REQUEST['plantName']);
 $plantSynonyms = clean($_REQUEST['plantSynonyms']);
 $plantAuthority = clean($_REQUEST['plantAuthority']);
 $plantDesc = clean($_REQUEST['plantDesc']);
+$plantPhoto = clean($_REQUEST['plantPhoto']);
 $taxonomyClass = clean($_REQUEST['taxonomyClass']);
 $taxonomyFamily = clean($_REQUEST['taxonomyFamily']);
 $taxonomyGenus = clean($_REQUEST['taxonomyGenus']);
@@ -19,8 +20,8 @@ $taxonomyOrder = clean($_REQUEST['taxonomyOrder']);
 $taxonomyPhylum = clean($_REQUEST['taxonomyPhylum']);
 $date = getCurrentDate();
 $response_array['array_data'] = array();
-$image = $assessmentPhoto;
-$DIR = "../vendors/assessment/";
+$image = $plantPhoto;
+$DIR = "../vendors/file/";
 $file_chunks = explode(";base64,", $image);
 $fileType = explode("image/", $file_chunks[0]);
 $image_type = $fileType[1];
@@ -39,6 +40,6 @@ if ($sql) {
 }
 
 
-// $response["res"] = $plantScanId;
+$response["res"] = $image;
 array_push($response_array['array_data'], $response);
 echo json_encode($response_array);

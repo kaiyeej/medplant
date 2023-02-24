@@ -30,15 +30,20 @@ $img_file = uniqid() . "." . $image_type;
 $file = $DIR . $img_file;
 
 $response = array();
-$sql = $mysqli_connect->query("INSERT INTO `tbl_plants` (`plantid`, `plant_name`, `plant_name_authority`, `plant_synonyms`, `plant_taxonomy_class`, `plant_taxonomy_family`, `plant_taxonomy_genus`, `plant_taxonomy_kingdom`, `plant_taxonomy_order`, `plant_taxonomy_phylum`, `plant_description`, `plant_img`, `date_added`) VALUES ('$plantScanId', '$plantName', '$plantAuthority', '$plantSynonyms', '$taxonomyClass', '$taxonomyFamily', '$taxonomyGenus','$taxonomyKingdom', '$taxonomyOrder', '$taxonomyPhylum', '$plantDesc', '$img_file', '$date')");
-if ($sql) {
-    $base64Img = base64_decode($file_chunks[1]);
-    file_put_contents($file, $base64Img);
-    $response["res"] =  1;
-} else {
-    $response["res"] = 0;
-}
 
+$fetch_plant = $mysqli_connect->query("SELECT * FROM tbl_plants WHERE plantid='$plantScanId'");
+if ($fetch_plant->num_rows ==  0) {
+    $sql = $mysqli_connect->query("INSERT INTO `tbl_plants` (`plantid`, `plant_name`, `plant_name_authority`, `plant_synonyms`, `plant_taxonomy_class`, `plant_taxonomy_family`, `plant_taxonomy_genus`, `plant_taxonomy_kingdom`, `plant_taxonomy_order`, `plant_taxonomy_phylum`, `plant_description`, `plant_img`, `date_added`) VALUES ('$plantScanId', '$plantName', '$plantAuthority', '$plantSynonyms', '$taxonomyClass', '$taxonomyFamily', '$taxonomyGenus','$taxonomyKingdom', '$taxonomyOrder', '$taxonomyPhylum', '$plantDesc', '$img_file', '$date')");
+    if ($sql) {
+        $base64Img = base64_decode($file_chunks[1]);
+        file_put_contents($file, $base64Img);
+        $response["res"] =  1;
+    } else {
+        $response["res"] = 0;
+    }
+} else {
+    $response["res"] = 2;
+}
 
 // $response["res"] = $image;
 array_push($response_array['array_data'], $response);

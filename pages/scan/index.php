@@ -129,6 +129,10 @@
             });
     }
 
+    function closeModal(){
+        location.reload();
+    }
+
     function scanHealth() {
         document.getElementById("frm_health_submit").reset();
         $("#modalEntry").modal("show");

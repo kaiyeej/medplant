@@ -18,9 +18,9 @@ define("database", "medplants_db");
 
 // online
 // define("host", "localhost");
-// define("username", "u981310152_trisakay_root1");
-// define("password", "yuhn~vjZ3B:");
-// define("database", "u981310152_trisakay_db");
+// define("username", "u981310152_mp_root");
+// define("password", "kp^d=wY6]N");
+// define("database", "u981310152_medplants_db");
 /** Auth **/
 
 // define("table", "tbl_users");

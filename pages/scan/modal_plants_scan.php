@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 id="modalLabel"><i class='flaticon-edit'></i> Plant</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> × </button>
+                    <button type="button"  onclick="closeModal()" class="close" data-dismiss="modal" aria-hidden="true"> × </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -90,7 +90,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <button type="button"  onclick="closeModal()" class="btn btn-secondary" data-dismiss="modal">
                         Close
                     </button>
                     <button type="submit" id="btn_submit2" style="display:none;" class="btn btn-success">

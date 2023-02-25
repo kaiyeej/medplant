@@ -10,7 +10,7 @@
                     <div class="row div-scan">
                         <div class="col-lg-10">
                             <div class="form-group">
-                                <input type="file" class="form-control" name="file" id="plant_img" autocomplete="off" required>
+                                <input type="file" class="form-control" name="file" id="assessment_img" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="col-lg-2">

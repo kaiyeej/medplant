@@ -67,7 +67,7 @@
         var promises = atob(a_img);
 
         const data = {
-            api_key: "eqrx10kK3Oz53iDgiZytx1q71pr6Mk1hnbIZCFuZIECchVuW0D",
+            api_key: "W4h32XMclIrz3b5dbzHTGazTVXzW2qGicQ4ZpWm5ibif1QETf2",
             images: [promises],
             modifiers: ["crops_fast", "similar_images"],
             plant_language: "en",
@@ -235,7 +235,7 @@
         console.log(promises);
 
         const data = {
-            api_key: "eqrx10kK3Oz53iDgiZytx1q71pr6Mk1hnbIZCFuZIECchVuW0D",
+            api_key: "W4h32XMclIrz3b5dbzHTGazTVXzW2qGicQ4ZpWm5ibif1QETf2",
             images: [promises],
             // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
             modifiers: ["crops_fast", "similar_images"],

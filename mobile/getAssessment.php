@@ -9,7 +9,7 @@ require_once '../core_mobile/config.php';
 
 
 $response_array['array_data'] = array();
-$fetch = $mysqli_connect->query("SELECT * FROM tbl_health_assessment");
+$fetch = $mysqli_connect->query("SELECT * FROM tbl_health_assessment ORDER BY date_added DESC");
 while ($row = $fetch->fetch_array()) {
     $response = array();
 

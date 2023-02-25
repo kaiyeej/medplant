@@ -84,15 +84,11 @@ class HealthAssessment extends Connection
             $form = array(
                 $this->name                 =>  $this->clean($this->inputs[$this->name]),
                 'entity_id'                   => $this->clean($this->inputs['entity_id']),
-                'plant_name_authority'      => $this->clean($this->inputs['plant_name_authority']),
-                'plant_synonyms'            => $this->clean($this->inputs['plant_synonyms']),
-                'plant_taxonomy_class'      => $this->clean($this->inputs['plant_taxonomy_class']),
-                'plant_taxonomy_family'     => $this->clean($this->inputs['plant_taxonomy_family']),
-                'plant_taxonomy_genus'      => $this->clean($this->inputs['plant_taxonomy_genus']),
-                'plant_taxonomy_kingdom'    => $this->clean($this->inputs['plant_taxonomy_kingdom']),
-                'plant_taxonomy_order'      => $this->clean($this->inputs['plant_taxonomy_order']),
-                'plant_taxonomy_phylum'     => $this->clean($this->inputs['plant_taxonomy_phylum']),
-                'plant_description'         => $this->clean($this->inputs['plant_description']),
+                'is_healthy'                => $this->clean($this->inputs['is_healthy']),
+                'assessment_common_name'    => $this->clean($this->inputs['assessment_common_name']),
+                'assessment_description'    => $this->clean($this->inputs['assessment_description']),
+                'assessment_biological'     => $this->clean($this->inputs['assessment_biological']),
+                'assessment_prevention'     => $this->clean($this->inputs['assessment_prevention']),
                 'curable_diseases'          => $this->clean($this->inputs['curable_diseases']),
             );
 

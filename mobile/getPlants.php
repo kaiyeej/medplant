@@ -17,7 +17,7 @@ while ($row = $fetch->fetch_array()) {
     $response["plant_name"] = $row['plant_name'];
     $response["plant_name_authority"] = $row['plant_name_authority'];
     $response["plant_img"] = $row['plant_img'];
-    $response["date_added"] = $row['date_added'];
+    $response["date_added"] = date('F j, Y', strtotime($row['date_added']));
 
 
     array_push($response_array['array_data'], $response);

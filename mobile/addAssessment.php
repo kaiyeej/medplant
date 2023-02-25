@@ -29,13 +29,13 @@ $file = $DIR . $img_file;
 $response = array();
 $fetch_assessment = $mysqli_connect->query("SELECT * FROM tbl_health_assessment WHERE entity_id='$assessmentScanId'");
 if ($fetch_assessment->num_rows ==  0) {
-    $sql = $mysqli_connect->query("INSERT INTO `tbl_health_assessment` (`assessment_name`, `entity_id`, `is_healthy`, `assessment_common_name`, `assessment_description`, `assessment_biological`, `assessment_prevention`, `assessment_img`,`curable_diseases`, `date_added`) VALUES ('$assessmentName', '$assessmentScanId', 1, '$assessmentCommonName', '$assessmentDesc', '$assessmentBiological', '$assessmentPrevention', '$img_file','$curableDiseases', '$date')");
-    if ($sql) {
-        $base64Img = base64_decode($file_chunks[1]);
-        file_put_contents($file, $base64Img);
-        $response["res"] =  1;
-    } else {
-        $response["res"] = 0;
+    if (file_put_contents($file, $base64Img)) {
+        $sql = $mysqli_connect->query("INSERT INTO `tbl_health_assessment` (`assessment_name`, `entity_id`, `is_healthy`, `assessment_common_name`, `assessment_description`, `assessment_biological`, `assessment_prevention`, `assessment_img`,`curable_diseases`, `date_added`) VALUES ('$assessmentName', '$assessmentScanId', 1, '$assessmentCommonName', '$assessmentDesc', '$assessmentBiological', '$assessmentPrevention', '$img_file','$curableDiseases', '$date')");
+        if ($sql) {
+            $response["res"] =  1;
+        } else {
+            $response["res"] = 0;
+        }
     }
 } else {
     $response["res"] = 2;

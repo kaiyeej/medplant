@@ -18,7 +18,7 @@ while ($row = $fetch->fetch_array()) {
     $response["entity_id"] = $row['entity_id'];
     $response["assessment_common_name"] = $row['assessment_common_name'];
     $response["assessment_img"] = $row['assessment_img'];
-    $response["date_added"] = $row['date_added'];
+    $response["date_added"] = date('F j, Y', strtotime($row['date_added']));
 
 
     array_push($response_array['array_data'], $response);

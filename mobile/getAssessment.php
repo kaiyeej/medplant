@@ -9,7 +9,7 @@ require_once '../core_mobile/config.php';
 
 
 $response_array['array_data'] = array();
-$fetch = $mysqli_connect->query("SELECT * FROM tbl_health_assessment");
+$fetch = $mysqli_connect->query("SELECT * FROM tbl_health_assessment ORDER BY date_added DESC");
 while ($row = $fetch->fetch_array()) {
     $response = array();
 
@@ -18,7 +18,7 @@ while ($row = $fetch->fetch_array()) {
     $response["entity_id"] = $row['entity_id'];
     $response["assessment_common_name"] = $row['assessment_common_name'];
     $response["assessment_img"] = $row['assessment_img'];
-    $response["date_added"] = $row['date_added'];
+    $response["date_added"] = date('F j, Y', strtotime($row['date_added']));
 
 
     array_push($response_array['array_data'], $response);

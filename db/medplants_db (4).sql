@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2023 at 09:23 AM
+-- Generation Time: Feb 25, 2023 at 04:12 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -37,6 +37,7 @@ CREATE TABLE `tbl_health_assessment` (
   `assessment_description` text NOT NULL,
   `assessment_biological` text NOT NULL,
   `assessment_prevention` text NOT NULL,
+  `curable_diseases` text NOT NULL,
   `assessment_img` text NOT NULL,
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -45,8 +46,10 @@ CREATE TABLE `tbl_health_assessment` (
 -- Dumping data for table `tbl_health_assessment`
 --
 
-INSERT INTO `tbl_health_assessment` (`assessment_id`, `assessment_name`, `entity_id`, `is_healthy`, `assessment_common_name`, `assessment_description`, `assessment_biological`, `assessment_prevention`, `assessment_img`, `date_added`) VALUES
-(1, 'nutrient-related issue', 0, 1, 'nutritional disease', 'Nutrient-related abiotic disorders are caused by deficiency or toxicity of macronutrients and micronutrients essential for the plant. This can be caused by a suboptimal amount of nutrients in the soil or unsuitable conditions for nutrients uptake.', 'Replant the plant into fresh soil rich in nutrients.', 'Change the soil regularly. Plants should be repotted when the soil is compacted, depleted of nutrients, and no longer retains water.,Choose suitable neighboring plants. Plants with similar nutrient requirements should not be planted close to each other.', 'DCTM_Penguin_UK_DK_AL458052_zs2mia.webp', '2023-01-17 16:51:19');
+INSERT INTO `tbl_health_assessment` (`assessment_id`, `assessment_name`, `entity_id`, `is_healthy`, `assessment_common_name`, `assessment_description`, `assessment_biological`, `assessment_prevention`, `curable_diseases`, `assessment_img`, `date_added`) VALUES
+(1, 'nutrient-related issue', 0, 1, 'nutritional disease', 'Nutrient-related abiotic disorders are caused by deficiency or toxicity of macronutrients and micronutrients essential for the plant. This can be caused by a suboptimal amount of nutrients in the soil or unsuitable conditions for nutrients uptake.', 'Replant the plant into fresh soil rich in nutrients.', 'Change the soil regularly. Plants should be repotted when the soil is compacted, depleted of nutrients, and no longer retains water.,Choose suitable neighboring plants. Plants with similar nutrient requirements should not be planted close to each other.', '', 'DCTM_Penguin_UK_DK_AL458052_zs2mia.webp', '2023-01-17 16:51:19'),
+(2, 'Peronosporales', 71246401, 0, 'tr', 'Peronosporales are oomycetes, a group related to fungi, also known as water molds. They cause infectious diseases such as downy mildew.', 'If possible remove and destroy the infected parts of the plant. Burn it, toss it into the garbage, or bury it deeply. Do not compost.,If the infection is widespread, remove and destroy the infected plant. Burn it, toss it into the garbage, or bury it deeply. Do not compost.', 'Use resistant species and cultivars as well as healthy, certified seeds and seedlings.,Rotate crops. Avoid planting sensitive crops in infested soil.,Ensure having good soil drainage to avoid overwatering.,Disinfect tools, infected flower pots, and hands to avoid disease transmission.,If necessary, use chemical products as a prevention (e.g. copper-based spray). These chemicals may lead to the development of resistant strains.', '', 'Leaves-stem-root-system-fig-tree-seedling.webp', '2023-02-25 09:35:06'),
+(3, 'abiotic', 71246568, 0, 'abiotic disorder', 'Abiotic disorders are caused by non-living factors - usually by unsuitable environmental conditions, such as drought stress, nutrient deficiency, improper watering, or planting conditions.', '', '', 'sample', '63f966eeafcd1.png', '2023-02-25 09:39:58');
 
 -- --------------------------------------------------------
 
@@ -141,7 +144,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_health_assessment`
 --
 ALTER TABLE `tbl_health_assessment`
-  MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_plants`

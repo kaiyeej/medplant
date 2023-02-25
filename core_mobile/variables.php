@@ -9,18 +9,18 @@
 // offline
 
 
-define("host", "localhost");
-define("username", "root");
-define("password", "");
-define("database", "medplants_db");
+// define("host", "localhost");
+// define("username", "root");
+// define("password", "");
+// define("database", "medplants_db");
 
 
 
 // online
-// define("host", "localhost");
-// define("username", "u981310152_mp_root");
-// define("password", "kp^d=wY6]N");
-// define("database", "u981310152_medplants_db");
+define("host", "localhost");
+define("username", "u981310152_mp_root");
+define("password", "kp^d=wY6]N");
+define("database", "u981310152_medplants_db");
 /** Auth **/
 
 // define("table", "tbl_users");

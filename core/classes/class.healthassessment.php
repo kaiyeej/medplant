@@ -66,6 +66,7 @@ class HealthAssessment extends Connection
                 'assessment_description'    => $this->clean($this->inputs['assessment_description']),
                 'assessment_biological'     => $this->clean($this->inputs['assessment_biological']),
                 'assessment_prevention'     => $this->clean($this->inputs['assessment_prevention']),
+                'curable_diseases'          => $this->clean($this->inputs['curable_diseases']),
                 'assessment_img'            => $fileName,
             );
 
@@ -92,6 +93,7 @@ class HealthAssessment extends Connection
                 'plant_taxonomy_order'      => $this->clean($this->inputs['plant_taxonomy_order']),
                 'plant_taxonomy_phylum'     => $this->clean($this->inputs['plant_taxonomy_phylum']),
                 'plant_description'         => $this->clean($this->inputs['plant_description']),
+                'curable_diseases'          => $this->clean($this->inputs['curable_diseases']),
             );
 
             return $this->updateIfNotExist($this->table, $form, "$this->pk = '$primary_id'");

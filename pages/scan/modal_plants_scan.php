@@ -86,6 +86,7 @@
                                 <textarea class="form-control input-item" name="input[plant_description]" id="plant_description" autocomplete="off"></textarea>
                             </div>
                         </div>
+
                     </div>
 
                 </div>

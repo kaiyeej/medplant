@@ -28,7 +28,7 @@
                     </div>
                     <hr class="div-scan">
                     <input type="hidden" id="hidden_id" name="input[assessment_id]">
-                    <input type="text" class="form-control input-item" id="entity_id" name="input[entity_id]">
+                    <input type="hidden" class="form-control input-item" id="entity_id" name="input[entity_id]">
                     <input type="hidden" class="form-control input-item" id="is_healthy" name="input[is_healthy]">
                     <div class="row" id="canvas_plant">
                         <div class="col-lg-6">
@@ -59,6 +59,12 @@
                             <div class="form-group">
                                 <label>Description<span class="text-danger">*</span></label>
                                 <textarea class="form-control input-item" name="input[assessment_description]" id="assessment_description" autocomplete="off" style="height: 100px;">></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Curable Diseases</label>
+                                <textarea class="form-control input-item" name="input[curable_diseases]" id="curable_diseases" autocomplete="off" style="height: 100px;" ></textarea>
                             </div>
                         </div>
                     </div>

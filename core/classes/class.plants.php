@@ -33,6 +33,7 @@ class Plants extends Connection
                 'plant_taxonomy_order'      => $this->clean($this->inputs['plant_taxonomy_order']),
                 'plant_taxonomy_phylum'     => $this->clean($this->inputs['plant_taxonomy_phylum']),
                 'plant_description'         => $this->clean($this->inputs['plant_description']),
+                'curable_diseases'          => $this->clean($this->inputs['curable_diseases']),
                 'plant_img'                 => $plant_img,
             );
 
@@ -73,6 +74,7 @@ class Plants extends Connection
                 'plant_taxonomy_order'      => $this->clean($this->inputs['plant_taxonomy_order']),
                 'plant_taxonomy_phylum'     => $this->clean($this->inputs['plant_taxonomy_phylum']),
                 'plant_description'         => $this->clean($this->inputs['plant_description']),
+                'curable_diseases'          => $this->clean($this->inputs['curable_diseases']),
                 'plant_img'                 => $fileName,
             );
 
@@ -99,6 +101,7 @@ class Plants extends Connection
                 'plant_taxonomy_order'      => $this->clean($this->inputs['plant_taxonomy_order']),
                 'plant_taxonomy_phylum'     => $this->clean($this->inputs['plant_taxonomy_phylum']),
                 'plant_description'         => $this->clean($this->inputs['plant_description']),
+                'curable_diseases'          => $this->clean($this->inputs['curable_diseases']),
             );
 
             return $this->updateIfNotExist($this->table, $form, "$this->pk = '$primary_id'");

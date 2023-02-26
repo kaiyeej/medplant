@@ -61,12 +61,12 @@
                                 <textarea class="form-control input-item" name="input[assessment_description]" id="assessment_description" autocomplete="off" style="height: 100px;">></textarea>
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <!-- <div class="col-lg-12" >
                             <div class="form-group">
                                 <label>Curable Diseases</label>
                                 <textarea class="form-control input-item" name="input[curable_diseases]" id="curable_diseases" autocomplete="off" style="height: 100px;" ></textarea>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="modal-footer">

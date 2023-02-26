@@ -7,13 +7,18 @@
                         <h3>Scan</h3>
                         <hr>
                     </div>
-                    <div class="col-md-6" style="text-align: center;padding: 40px;">
+                    <div class="col-md-4" style="text-align: center;padding: 40px;">
                         <button type="button" style="width: 200px;padding: 20px;" onclick="scanHealth()" class="btn btn-lg btn-success mt-2 mt-sm-0 btn-icon-text">
                             Health Assessment
                         </button>
                     </div>
-                    <div class="col-md-6" style="text-align: center;padding: 40px;">
-                        <button type="button" style="width: 200px;padding: 20px;" onclick="scanPlant()" class="btn btn-lg btn-info mt-2 mt-sm-0 btn-icon-text">
+                    <div class="col-md-4" style="text-align: center;padding: 40px;">
+                        <button type="button" style="width: 200px;padding: 20px;" onclick="scanPlant(1)" class="btn btn-lg btn-secondary mt-2 mt-sm-0 btn-icon-text">
+                            Curable Diseases/Ailments
+                        </button>
+                    </div>
+                    <div class="col-md-4" style="text-align: center;padding: 40px;">
+                        <button type="button" style="width: 200px;padding: 20px;" onclick="scanPlant(2)" class="btn btn-lg btn-info mt-2 mt-sm-0 btn-icon-text">
                             Plants
                         </button>
                     </div>
@@ -28,7 +33,7 @@
 <?php include "modal_plants_scan.php"; ?>
 <?php include "modal_health_scan.php"; ?>
 <script type="text/javascript">
-    function scanPlant() {
+    function scanPlant(type) {
         document.getElementById("frm_plants_submit").reset();
         $("#modalPlants").modal("show");
         $(".div-scan").show();
@@ -45,6 +50,14 @@
         });
 
         Webcam.attach('#plant_camera');
+
+        if(type == 1){
+            $(".canvas_plants").hide();
+            $('#div_plant_name').addClass('col-lg-12').removeClass("col-lg-6");
+        }else{
+            $(".canvas_plants").show();
+            $('#div_plant_name').addClass("col-lg-6").removeClass("col-lg-12");
+        }
     }
 
     function take_snapshot2() {

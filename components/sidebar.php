@@ -1,6 +1,6 @@
 <?php 
 $request = $_SERVER['REQUEST_URI'];
-$page = str_replace("/medplant/", "", $request);
+$page = str_replace("/medplants/", "", $request);
 ?>
 <div class="left-side-bar">
     <div class="brand-logo">

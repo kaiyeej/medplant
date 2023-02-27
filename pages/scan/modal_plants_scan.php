@@ -115,9 +115,10 @@
         $("#btn_submit2").html("<span class='fa fa-spinner fa-spin'></span> Submitting ...");
 
         var hidden_id = $("#hidden_id").val();
+		var q = hidden_id > 0 ? "edit" : "scan";
         $.ajax({
             type: "POST",
-            url: "controllers/sql.php?c=Plants&q=scan",
+            url: "controllers/sql.php?c=Plants&q="+ q,
             data: new FormData(this),
             contentType: false,
             cache: false,

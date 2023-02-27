@@ -139,7 +139,7 @@
             console.log(base64files)
 
             const data = {
-                api_key: "W4h32XMclIrz3b5dbzHTGazTVXzW2qGicQ4ZpWm5ibif1QETf2",
+                api_key: "4DL1S4fe6BCYhUm7TnZPe9gFBXGaWBm3JLXu3DNtGAaQlA6ZT8",
                 images: base64files,
                 // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
                 modifiers: ["crops_fast", "similar_images"],
@@ -173,24 +173,49 @@
                         var k = data.health_assessment['diseases'][0];
                         $("#entity_id").val(data.id);
 
-                        if(data.health_assessment['is_healthy'] == true){
+                        if (data.health_assessment['is_healthy'] == true) {
                             $("#span_healthy").html("<strong> Healthy </strong>");
                             $("#is_healthy").val(1);
-                        }else{
+                        } else {
                             $("#span_healthy").html("<strong style='color: #f44336;'> Not Healthy </strong>");
                             $("#is_healthy").val(0);
                         }
 
-                        $("#span_probability").html(k['probability']*100);
-                        $("#assessment_name").val(k['name']);
-                        if(k['disease_details'].common_names != null){
-                            $("#assessment_common_name").val(k['disease_details'].common_names[0]);
-                        }else{
-                            $("#assessment_common_name").val('');
-                        }
-                        $("#assessment_description").val(k['disease_details'].description);
-                        $("#assessment_biological").val(k['disease_details'].treatment['biological']);
-                        $("#assessment_prevention").val(k['disease_details'].treatment['prevention']);
+                        $.ajax({
+                            type: "POST",
+                            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=checker",
+                            data: {
+                                input: {
+                                    assessment_name: k['name']
+                                }
+                            },
+                            success: function(data) {
+                                var json = JSON.parse(data);
+                                if (json.data == -1) {
+
+                                    $("#assessment_name").val(json.data['plant_name']);
+                                    $("#assessment_common_name").val(json.data['assessment_common_name']);
+                                    $("#assessment_description").val(json.data['assessment_description']);
+                                    $("#assessment_biological").val(json.data['assessment_biological']);
+                                    $("#assessment_prevention").val(json.data['assessment_prevention']);
+                                    $("#hidden_id").val(json.data['assessent_id']);
+
+                                } else {
+                                    $("#assessment_name").val(k['name']);
+                                    if (k['disease_details'].common_names != null) {
+                                        $("#assessment_common_name").val(k['disease_details'].common_names[0]);
+                                    } else {
+                                        $("#assessment_common_name").val('');
+                                    }
+                                    $("#assessment_description").val(k['disease_details'].description);
+                                    $("#assessment_biological").val(k['disease_details'].treatment['biological']);
+                                    $("#assessment_prevention").val(k['disease_details'].treatment['prevention']);
+                                    $("#hidden_id").val('');
+                                }
+                            }
+                        });
+
+                        $("#span_probability").html(k['probability'] * 100);
                         
                     } else {
                         swal("Cannot proceed!", "Item is not a plant.", "warning");

@@ -22,9 +22,9 @@
                         <button type="button" onclick="scanPlant()" class="btn btn-success mt-2 mt-sm-0 btn-icon-text">
                             <i class="fa fa-plus"></i> Add New
                         </button>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
             <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
@@ -142,7 +142,7 @@
             console.log(base64files)
 
             const data = {
-                api_key: "W4h32XMclIrz3b5dbzHTGazTVXzW2qGicQ4ZpWm5ibif1QETf2",
+                api_key: "4DL1S4fe6BCYhUm7TnZPe9gFBXGaWBm3JLXu3DNtGAaQlA6ZT8",
                 images: base64files,
                 // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
                 modifiers: ["crops_fast", "similar_images"],
@@ -174,18 +174,49 @@
                         $("#btn_submit").show();
 
                         var k = data.suggestions[0];
-                        $("#plantid").val(k['id']);
-                        $("#plant_name").val(k['plant_name']);
-                        $("#plant_name_authority").val(k['plant_details'].name_authority);
-                        $("#plant_synonyms").val(k['plant_details'].synonyms);
-                        $("#plant_taxonomy_class").val(k['plant_details'].taxonomy['class']);
-                        $("#plant_taxonomy_family").val(k['plant_details'].taxonomy['family']);
-                        $("#plant_taxonomy_genus").val(k['plant_details'].taxonomy['genus']);
-                        $("#plant_taxonomy_kingdom").val(k['plant_details'].taxonomy['kingdom']);
-                        $("#plant_taxonomy_order").val(k['plant_details'].taxonomy['order']);
-                        $("#plant_taxonomy_phylum").val(k['plant_details'].taxonomy['phylum']);
-                        $("#plant_description").val(k['plant_details'].wiki_description['value']);
-                        $("#span_probability").html(k['probability']);
+                        $.ajax({
+                            type: "POST",
+                            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=checker",
+                            data: {
+                                input: {
+                                    plant_name: k['plant_name']
+                                }
+                            },
+                            success: function(data) {
+                                var json = JSON.parse(data);
+                                if (json.data == -1) {
+                                    $("#plantid").val(k['id']);
+                                    $("#plant_name").val(k['plant_name']);
+                                    $("#plant_name_authority").val(k['plant_details'].name_authority);
+                                    $("#plant_synonyms").val(k['plant_details'].synonyms);
+                                    $("#plant_taxonomy_class").val(k['plant_details'].taxonomy['class']);
+                                    $("#plant_taxonomy_family").val(k['plant_details'].taxonomy['family']);
+                                    $("#plant_taxonomy_genus").val(k['plant_details'].taxonomy['genus']);
+                                    $("#plant_taxonomy_kingdom").val(k['plant_details'].taxonomy['kingdom']);
+                                    $("#plant_taxonomy_order").val(k['plant_details'].taxonomy['order']);
+                                    $("#plant_taxonomy_phylum").val(k['plant_details'].taxonomy['phylum']);
+                                    $("#plant_description").val(k['plant_details'].wiki_description['value']);
+                                    $("#hidden_id").val('');
+                                } else {
+                                    $("#plant_name").val(json.data['plant_name']);
+                                    $("#hidden_id").val(json.data['plant_id']);
+
+                                    $("#plantid").val(json.data['plantid']);
+                                    $("#plant_name_authority").val(json.data['plantid']);
+                                    $("#plant_synonyms").val(json.data['plant_synonyms']);
+                                    $("#plant_taxonomy_class").val(json.data['plant_taxonomy_class']);
+                                    $("#plant_taxonomy_family").val(json.data['plant_taxonomy_family']);
+                                    $("#plant_taxonomy_genus").val(json.data['plant_taxonomy_genus']);
+                                    $("#plant_taxonomy_kingdom").val(json.data['plant_taxonomy_kingdom']);
+                                    $("#plant_taxonomy_order").val(json.data['plant_taxonomy_order']);
+                                    $("#plant_taxonomy_phylum").val(json.data['plant_taxonomy_phylum']);
+                                    $("#plant_description").val(json.data['plant_description']);
+                                    $("#curable_diseases").val(json.data['curable_diseases']);
+                                }
+                                
+                                $("#span_probability").html(k['probability']);
+                            }
+                        });
 
                     } else {
                         swal("Cannot proceed!", "Item is not a plant.", "warning");
@@ -199,13 +230,16 @@
 
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                    // console.error('Error:', error);
 
                     $("#btn_scan").prop("disabled", false);
                     $("#btn_scan").html("Scan");
                 });
         })
     }
+
+    var plant_checker
+
 
     $(document).ready(function() {
         getEntries();

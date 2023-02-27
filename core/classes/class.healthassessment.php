@@ -116,6 +116,17 @@ class HealthAssessment extends Connection
         return $result->fetch_assoc();
     }
 
+    public function checker()
+    {
+        $assessment_name = $this->inputs['assessment_name'];
+        $result = $this->select($this->table, "*", "assessment_name = '$assessment_name'");
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        }else{
+            return -1;
+        }
+    }
+
     public function remove()
     {
         $ids = implode(",", $this->inputs['ids']);

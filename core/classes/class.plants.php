@@ -127,6 +127,17 @@ class Plants extends Connection
         $result = $this->select($this->table, "*", "$this->pk = '$primary_id'");
         return $result->fetch_assoc();
     }
+    public function checker()
+    {
+        $plant_name = $this->inputs['plant_name'];
+        $result = $this->select($this->table, "*", "plant_name = '$plant_name'");
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        }else{
+            return -1;
+        }
+    }
+    
 
     public function remove()
     {

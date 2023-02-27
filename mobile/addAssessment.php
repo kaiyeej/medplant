@@ -30,7 +30,7 @@ $response = array();
 
 $base64Img = base64_decode($file_chunks[1]);
 if (file_put_contents($file, $base64Img)) {
-    $sql = $mysqli_connect->query("INSERT INTO `tbl_health_assessment` (`assessment_name`, `entity_id`, `is_healthy`, `assessment_common_name`, `assessment_description`, `assessment_biological`, `assessment_prevention`, `assessment_img`,`curable_diseases`, `date_added`) VALUES ('$assessmentName', '$assessmentScanId', 1, '$assessmentCommonName', '$assessmentDesc', '$assessmentBiological', '$assessmentPrevention', '$img_file','$curableDiseases', '$date')");
+    $sql = $mysqli_connect->query("INSERT INTO `tbl_health_assessment` (`assessment_name`, `entity_id`, `is_healthy`, `assessment_common_name`, `assessment_description`, `assessment_biological`, `assessment_prevention`, `assessment_img`, `date_added`) VALUES ('$assessmentName', '$assessmentScanId', 1, '$assessmentCommonName', '$assessmentDesc', '$assessmentBiological', '$assessmentPrevention', '$img_file', '$date')");
     if ($sql) {
         $response["res"] =  1;
     } else {

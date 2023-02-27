@@ -7,9 +7,9 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once '../core_mobile/config.php';
 
-$plantid = $_REQUEST['plantid'];
+$plant_name = $_REQUEST['plant_name'];
 $response_array['array_data'] = array();
-$fetch = $mysqli_connect->query("SELECT * FROM tbl_plants WHERE plantid='$plantid'");
+$fetch = $mysqli_connect->query("SELECT * FROM tbl_plants WHERE plant_name='$plant_name'");
 while ($row = $fetch->fetch_array()) {
     $response = array();
 
@@ -24,6 +24,7 @@ while ($row = $fetch->fetch_array()) {
     $response["plant_taxonomy_order"] = $row['plant_taxonomy_order'];
     $response["plant_taxonomy_phylum"] = $row['plant_taxonomy_phylum'];
     $response["plant_description"] = $row['plant_description'];
+    $response["curable_diseases"] = $row['curable_diseases'];
     $response["date_added"] = date('F j, Y', strtotime($row['date_added']));
 
 

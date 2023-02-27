@@ -17,7 +17,7 @@ $date = getCurrentDate();
 $response_array['array_data'] = array();
 
 $response = array();
-$sql = $mysqli_connect->query("UPDATE `tbl_health_assessment` SET `assessment_name`='$assessmentName', `is_healthy`='1', `assessment_common_name`='$assessmentCommonName', `assessment_description`='$assessmentDesc', `assessment_biological`='$assessmentBiological', `assessment_prevention`='$assessmentPrevention', `curable_diseases`='$curableDiseases' WHERE  `entity_id`='$assessmentScanId'");
+$sql = $mysqli_connect->query("UPDATE `tbl_health_assessment` SET `assessment_name`='$assessmentName', `is_healthy`='1', `assessment_common_name`='$assessmentCommonName', `assessment_description`='$assessmentDesc', `assessment_biological`='$assessmentBiological', `assessment_prevention`='$assessmentPrevention', `curable_diseases`='$curableDiseases' WHERE  `assessmentName`='$assessmentName'");
 if ($sql) {
     $response["res"] =  1;
 } else {

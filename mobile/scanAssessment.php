@@ -7,9 +7,9 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once '../core_mobile/config.php';
 
-$entity_id = $_REQUEST['entity_id'];
+$assessment_name = $_REQUEST['assessment_name'];
 $response_array['array_data'] = array();
-$fetch = $mysqli_connect->query("SELECT * FROM tbl_health_assessment WHERE entity_id='$entity_id'");
+$fetch = $mysqli_connect->query("SELECT * FROM tbl_health_assessment WHERE assessment_name='$assessment_name'");
 while ($row = $fetch->fetch_array()) {
     $response = array();
     $response["assessment_id"] = $row['assessment_id'];
@@ -20,7 +20,6 @@ while ($row = $fetch->fetch_array()) {
     $response["assessment_biological"] = $row['assessment_biological'];
     $response["assessment_prevention"] = $row['assessment_prevention'];
     $response["assessment_img"] = $row['assessment_img'];
-    $response["curable_diseases"] = $row['curable_diseases'];
     $response["date_added"] = date('F j, Y', strtotime($row['date_added']));
     array_push($response_array['array_data'], $response);
 }

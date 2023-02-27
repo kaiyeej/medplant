@@ -17,10 +17,11 @@ $taxonomyGenus = clean($_REQUEST['taxonomyGenus']);
 $taxonomyKingdom = clean($_REQUEST['taxonomyKingdom']);
 $taxonomyOrder = clean($_REQUEST['taxonomyOrder']);
 $taxonomyPhylum = clean($_REQUEST['taxonomyPhylum']);
+$curableDiseases = clean($_REQUEST['curableDiseases']);
 $date = getCurrentDate();
 $response_array['array_data'] = array();
 
-$sql = $mysqli_connect->query("UPDATE `tbl_plants` SET `plant_name`='$plantName', `plant_name_authority`='$plantAuthority', `plant_synonyms`='$plantSynonyms', `plant_taxonomy_class`='$taxonomyClass', `plant_taxonomy_family`='$taxonomyFamily', `plant_taxonomy_genus`='$taxonomyGenus', `plant_taxonomy_kingdom`='$taxonomyKingdom', `plant_taxonomy_order`='$taxonomyOrder', `plant_taxonomy_phylum`='$taxonomyPhylum', `plant_description`='$plantDesc' WHERE  `plantid`='$plantScanId'");
+$sql = $mysqli_connect->query("UPDATE `tbl_plants` SET `plant_name`='$plantName', `plant_name_authority`='$plantAuthority', `plant_synonyms`='$plantSynonyms', `plant_taxonomy_class`='$taxonomyClass', `plant_taxonomy_family`='$taxonomyFamily', `plant_taxonomy_genus`='$taxonomyGenus', `plant_taxonomy_kingdom`='$taxonomyKingdom', `plant_taxonomy_order`='$taxonomyOrder', `plant_taxonomy_phylum`='$taxonomyPhylum', `plant_description`='$plantDesc',`curable_diseases`='$curableDiseases' WHERE  `plant_name`='$plantName'");
 if ($sql) {
     $response["res"] =  1;
 } else {

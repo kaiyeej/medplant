@@ -359,6 +359,8 @@
                                     $("#assessment_biological").val(k['disease_details'].treatment['biological']);
                                     $("#assessment_prevention").val(k['disease_details'].treatment['prevention']);
                                     $("#hidden_id2").val('');
+
+                                    
                                 }
                             }
                         });

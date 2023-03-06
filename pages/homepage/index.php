@@ -25,11 +25,11 @@
             <br>
             <div class="col-xl-12">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4 mb-20">
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-4 mb-20">
                         <div class="card-box height-100-p widget-style3">
                             <div class="d-flex flex-wrap">
                                 <div class="widget-data">
-                                    <div class="weight-700 font-24 text-dark"><?= $Home->total_user(); ?></div>
+                                    <div class="weight-700 font-24 text-dark"></div>
                                     <div class="font-14 text-secondary weight-500">
                                         Users
                                     </div>
@@ -41,8 +41,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 mb-20">
+                    </div> -->
+                    <div class="col-xl-6 col-lg-6 col-md-4 mb-20">
                         <div class="card-box height-100-p widget-style3">
                             <div class="d-flex flex-wrap">
                                 <div class="widget-data">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 mb-20">
+                    <div class="col-xl-6 col-lg-6 col-md-4 mb-20">
                         <div class="card-box height-100-p widget-style3">
                             <div class="d-flex flex-wrap">
                                 <div class="widget-data">
